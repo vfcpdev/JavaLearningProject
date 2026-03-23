@@ -1,0 +1,13 @@
+# Compilados de Java
+bin/
+*.class
+
+# Archivos de build y temporales
+sources.txt
+
+# IDEs
+.vscode/
+.idea/
+*.iws
+*.iml
+*.ipr
