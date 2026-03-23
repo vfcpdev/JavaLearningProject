@@ -2,43 +2,71 @@ package com.javalearning.cli;
 
 import java.util.Scanner;
 
-// Clases dentro de CLI para el ejemplo
-class Vehiculo {
-    protected String marca;
-    public Vehiculo(String marca) { this.marca = marca; }
-    public void pitar() { System.out.println("Vehículo " + marca + " hace: ¡Beep beep!"); }
-}
-
-class Coche extends Vehiculo {
-    private String modelo;
-    public Coche(String marca, String modelo) { super(marca); this.modelo = modelo; }
-    @Override
-    public void pitar() { System.out.println("Coche " + marca + " " + modelo + " hace: ¡Boooooop!"); }
-}
-
 public class OOPCLI {
+
+    // 1. CLASE PADRE (MOLDE BASE)
+    static class Empleado {
+        protected String nombre; // Protected para que los hijos lo hereden directo
+        
+        public Empleado(String nombre) {
+            this.nombre = nombre;
+        }
+        
+        public void trabajar() {
+            System.out.println("   [MÉTODO PADRE]: El empleado " + nombre + " está haciendo papeleo general.");
+        }
+    }
+
+    // 2. CLASE HIJA (HERENCIA y POLIMORFISMO)
+    static class Ingeniero extends Empleado {
+        private String lenguaje;
+        
+        // Constructor usando SUPER para delegarle el nombre al Padre
+        public Ingeniero(String nombre, String lenguaje) {
+            super(nombre);
+            this.lenguaje = lenguaje;
+        }
+        
+        // Polimorfismo: Sobrescribir (mutar) el comportamiento original
+        @Override
+        public void trabajar() {
+            System.out.println("   [MÉTODO HIJO - SOBRESCRITO]: El ingeniero " + nombre + " está arquitectando bases de datos usando " + lenguaje + ".");
+        }
+    }
+
     public static void main(String[] args) {
-        java.util.Scanner s = new java.util.Scanner(System.in);
-        run(s);
+        Scanner scanner = new Scanner(System.in);
+        run(scanner);
+        scanner.close();
     }
 
     public static void run(Scanner scanner) {
-        System.out.println("\n--- Programación Orientada a Objetos (POO) ---");
-        System.out.println("\n1. CLASES Y OBJETOS");
-        System.out.println("Las clases son diagramas/plantillas y los objetos son las instancias de estas clases.");
-        Vehiculo v1 = new Vehiculo("Genérico");
-        System.out.print("  -> Instancia de Vehículo: ");
-        v1.pitar();
+        System.out.println("\n=======================================================");
+        System.out.println("   MÓDULO 7: PROG. ORIENTADA A OBJETOS (INTERACTIVO)");
+        System.out.println("=======================================================");
         
-        System.out.println("\n2. HERENCIA Y POLIMORFISMO");
-        System.out.println("La herencia permite a una clase 'Coche' heredar atributos de 'Vehiculo'.");
-        System.out.println("El polimorfismo permite reescribir métodos con el mismo nombre y diferente comportamiento.");
-        Coche miCoche = new Coche("Toyota", "Corolla");
-        System.out.print("  -> Instancia de Coche (Herencia): ");
-        miCoche.pitar();
+        System.out.println("\n[ CREACIÓN DE CLASE PADRE ]");
+        System.out.print(">>> Inventa un nombre para contratar a un Empleado raso: ");
+        String nom1 = scanner.nextLine();
         
-        System.out.println("\nPresiona Enter para volver...");
-        scanner.nextLine();
-        scanner.nextLine();
+        Empleado emp = new Empleado(nom1);
+        System.out.println("-> CÓDIGO INYECTADO: Empleado emp = new Empleado(\"" + nom1 + "\");");
+        System.out.println("-> Ejecutando emp.trabajar()...");
+        emp.trabajar();
+        
+        System.out.println("\n[ HERENCIA Y POLIMORFISMO (CLASE HIJA) ]");
+        System.out.print(">>> Inventa un nombre para contratar a un Ingeniero de Software: ");
+        String nom2 = scanner.nextLine();
+        System.out.print(">>> ¿En qué lenguaje de programación se especializa?: ");
+        String lang = scanner.nextLine();
+        
+        Ingeniero ing = new Ingeniero(nom2, lang);
+        System.out.println("-> CÓDIGO INYECTADO: Ingeniero ing = new Ingeniero(\"" + nom2 + "\", \"" + lang + "\");");
+        System.out.println("-> Ejecutando ing.trabajar() ... Fíjate que el comando es el mismo que el Padre, ¡pero el objeto es otro!");
+        ing.trabajar();
+
+        System.out.println("\n=======================================================");
+        System.out.println("Presiona Enter para finalizar y volver al Menú Principal...");
+        if(scanner.hasNextLine()) scanner.nextLine();
     }
 }
