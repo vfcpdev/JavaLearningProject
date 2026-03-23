@@ -4,6 +4,9 @@ bin/
 
 # Archivos de build y temporales
 sources.txt
+target/
+.mvn/
+
 
 # IDEs
 .vscode/

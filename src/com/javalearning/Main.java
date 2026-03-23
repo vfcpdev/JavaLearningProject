@@ -15,6 +15,7 @@ import com.javalearning.cli.NonLinearContainersCLI;
 import com.javalearning.cli.ModernJavaCLI;
 import com.javalearning.cli.AboutCLI;
 import com.javalearning.cli.JavaHistoryCLI;
+import com.javalearning.cli.LessonsCLI;
 import com.javalearning.gui.MainGUI;
 
 public class Main {
@@ -47,6 +48,7 @@ public class Main {
             System.out.println("13. Características Modernas de Java (Records, Pattern Matching, Streams)");
             System.out.println("14. Acerca del Diseñador (Ing. Mg. Víctor Castro)");
             System.out.println("15. Lanzar Interfaz Gráfica (Swing GUI)");
+            System.out.println("16. Lecciones Prácticas / Curso Interactivo");
             System.out.println("0. Salir");
             System.out.print("Selecciona una opción: ");
             
@@ -99,6 +101,9 @@ public class Main {
                     case 15:
                         System.out.println("\nLanzando la Interfaz Gráfica...");
                         MainGUI.launchGUI();
+                        break;
+                    case 16:
+                        LessonsCLI.run(scanner);
                         break;
                     case 0:
                         System.out.println("\nSaliendo de la aplicación. ¡Sigue aprendiendo!");
