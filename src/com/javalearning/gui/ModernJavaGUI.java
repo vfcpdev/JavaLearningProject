@@ -1,88 +1,93 @@
 package com.javalearning.gui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.List;
-import java.util.ArrayList;
 
 public class ModernJavaGUI {
-    // Definición global del Record inmutable
-    public record ServerNode(String ip, int port, String status) {}
-    
+
+    // Simple Record Model encapsulando getters invisibles
+    public record Persona(String nombre, int edad) {}
+
     public ModernJavaGUI() {
-        JFrame frame = new JFrame("Características de Modern Java (dev.java/learn)");
-        frame.setSize(680, 520);
+        JFrame frame = new JFrame("Java Moderno Visual: Records & Streams API");
+        frame.setSize(800, 480);
         frame.setLocationRelativeTo(null);
         
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        JPanel panel = new JPanel(new BorderLayout(15, 15));
+        panel.setBackground(new Color(15, 56, 90)); // Pantone Dark Blue
+        panel.setBorder(new EmptyBorder(15, 15, 15, 15));
         
-        JTextArea info = new JTextArea(
-            "   [NUEVOS MÓDULOS DE VANGUARDIA (Inspirados en dev.java/learn)]\n\n" +
-            "1. Records (Java 14+): Constructores compactos de transporte de datos\n" +
-            "   inmutables que evitan escribir Getters/Setters y funciones toString.\n" +
-            "2. Pattern Matching: Evaluación tipada (obj instanceof Record x) protegiendo\n" +
-            "   la asignación virtual instantánea.\n" +
-            "3. Stream API: Iteradores asíncronos en tubería que filtran e invocan\n" +
-            "   expresiones Lambda a enorme velocidad sobre Listas de datos."
+        // Explicación de Records
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(new Color(245, 250, 255));
+        topPanel.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(new Color(31, 178, 222), 2), 
+            " 1. Instanciando Datos usando Java Record "
+        ));
+        
+        JTextArea txtRecord = new JTextArea(
+            "Creamos una plantilla inmutable de la siguiente manera:\n" +
+            "public record Persona(String nombre, int edad) {}\n\n" +
+            "A diferencia de las Clases Clásicas... ¡Los Objetos Record ya traen todo configurado internamente!"
         );
-        info.setEditable(false);
-        info.setFont(new Font("Monospaced", Font.PLAIN, 13));
+        txtRecord.setFont(new Font("Consolas", Font.BOLD, 15));
+        txtRecord.setEditable(false);
+        txtRecord.setMargin(new Insets(10, 10, 10, 10));
+        topPanel.add(txtRecord, BorderLayout.CENTER);
         
-        JPanel interact = new JPanel(new GridLayout(2, 1, 10, 10));
-        interact.setBorder(BorderFactory.createTitledBorder("Crea Instancias y somételas a Pattern Matching/Streams"));
+        // Lista Base y Stream API
+        JPanel bodyPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+        bodyPanel.setBackground(new Color(15, 56, 90));
         
-        JPanel inputs = new JPanel(new FlowLayout());
-        JTextField txtIp = new JTextField("extranet.db.app", 15);
-        JTextField txtPort = new JTextField("3306", 5);
-        JButton btnCrear = new JButton("Instanciar Record");
-        JButton btnStream = new JButton("Filtrar (The Stream API)");
+        JTextArea txtLista = new JTextArea("Lista Base:\n\n1. Maria (Edad: 25)\n2. Juanito (Edad: 15)\n3. Victor (Edad: 30)\n");
+        txtLista.setFont(new Font("Consolas", Font.PLAIN, 15));
+        txtLista.setEditable(false);
         
-        inputs.add(new JLabel("Dirección IPv4/Dominio: ")); inputs.add(txtIp);
-        inputs.add(new JLabel("Apertura de Puerto: ")); inputs.add(txtPort);
-        inputs.add(btnCrear); inputs.add(btnStream);
+        JTextArea txtResult = new JTextArea("Flujo (Stream) Procesado...\nEsperando Acción Matemático-Lógica.");
+        txtResult.setFont(new Font("Consolas", Font.PLAIN, 15));
+        txtResult.setBackground(new Color(10, 15, 20)); // Hacker Back
+        txtResult.setForeground(new Color(166, 206, 56)); // Green Pantone
+        txtResult.setEditable(false);
         
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        JList<String> list = new JList<>(listModel);
-        list.setFont(new Font("Consolas", Font.BOLD, 12));
-        listModel.addElement("Servidor Record => IP: 192.168.1.1 | Puerto: 22 [ESTADO: OFFLINE]");
-        listModel.addElement("Servidor Record => IP: 10.5.5.5 | Puerto: 443 [ESTADO: ACTIVE]");
+        bodyPanel.add(new JScrollPane(txtLista));
+        bodyPanel.add(new JScrollPane(txtResult));
         
-        btnCrear.addActionListener(e -> {
-            try {
-                // FEATURE 1: Construcción limpia de Record
-                ServerNode node = new ServerNode(txtIp.getText(), Integer.parseInt(txtPort.getText()), "ACTIVE");
-                
-                // FEATURE 2: Uso de Pattern Matching real inyectado (Soporte JDK 16+)
-                Object ob = node;
-                if(ob instanceof ServerNode n){
-                    listModel.addElement("Servidor Record => IP: " + n.ip() + " | Puerto: " + n.port() + " [ESTADO: " + n.status() + "]");
-                }
-            } catch(Exception ex) {
-                JOptionPane.showMessageDialog(frame, "Error: Ingrese un puerto válido.", "Falla", JOptionPane.ERROR_MESSAGE);
-            }
-        });
+        // Controles de Acción (Streams)
+        JPanel bottomPanel = new JPanel(new FlowLayout());
+        bottomPanel.setBackground(new Color(15, 56, 90));
+        
+        JButton btnStream = new JButton("Filtrar Mayores de Edad con Stream .filter()");
+        btnStream.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        btnStream.setBackground(new Color(251, 175, 23)); // Orange Pantone
+        btnStream.setForeground(new Color(15, 56, 90));
+        btnStream.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        java.util.List<Persona> grupo = java.util.List.of(
+            new Persona("Maria", 25),
+            new Persona("Juanito", 15),
+            new Persona("Victor", 30)
+        );
         
         btnStream.addActionListener(e -> {
-            List<String> clusterMemoria = new ArrayList<>();
-            for(int i = 0; i < listModel.size(); i++){
-                clusterMemoria.add(listModel.get(i));
-            }
+            txtResult.setText("===== TUBERÍA STREAM INICIADA =====\n\n");
             
-            listModel.clear();
-            listModel.addElement(" --- PROCESAMIENTO STREAM API COMPLETADO (Descartados OFFLINE) ---");
-            
-            // FEATURE 3: Stream pipelines con Expresiones Lambda para filtrar
-            clusterMemoria.stream()
-                          .filter(str -> str.contains("ACTIVE"))
-                          .forEach(str -> listModel.addElement(" >>> " + str));
+            // LÓGICA DE PROGRAMACIÓN MODERNA REAL
+            grupo.stream()
+                 .filter(persona -> persona.edad() >= 18)
+                 .forEach(persona -> {
+                     txtResult.append("-> Aprobado: " + persona.nombre() + " (Edad " + persona.edad() + ")\n");
+                 });
+                 
+            txtResult.append("\n===================================\nJuanito fue filtrado instantáneamente.");
+            btnStream.setEnabled(false);
         });
         
-        interact.add(inputs);
+        bottomPanel.add(btnStream);
         
-        panel.add(new JScrollPane(info), BorderLayout.NORTH);
-        panel.add(interact, BorderLayout.CENTER);
-        panel.add(new JScrollPane(list), BorderLayout.SOUTH);
+        panel.add(topPanel, BorderLayout.NORTH);
+        panel.add(bodyPanel, BorderLayout.CENTER);
+        panel.add(bottomPanel, BorderLayout.SOUTH);
         
         frame.add(panel);
         frame.setVisible(true);

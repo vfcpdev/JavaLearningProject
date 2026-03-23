@@ -17,6 +17,11 @@ class Coche extends Vehiculo {
 }
 
 public class OOPCLI {
+    public static void main(String[] args) {
+        java.util.Scanner s = new java.util.Scanner(System.in);
+        run(s);
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n--- Programación Orientada a Objetos (POO) ---");
         System.out.println("\n1. CLASES Y OBJETOS");

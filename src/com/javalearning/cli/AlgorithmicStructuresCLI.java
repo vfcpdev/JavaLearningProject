@@ -3,6 +3,11 @@ package com.javalearning.cli;
 import java.util.Scanner;
 
 public class AlgorithmicStructuresCLI {
+    public static void main(String[] args) {
+        java.util.Scanner s = new java.util.Scanner(System.in);
+        run(s);
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n--- Estructuras Algorítmicas Básicas ---");
         System.out.println("Enfoque práctico para Ingenieros de Sistemas");

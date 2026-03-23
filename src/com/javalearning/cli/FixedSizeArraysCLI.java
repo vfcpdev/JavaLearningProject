@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FixedSizeArraysCLI {
+    public static void main(String[] args) {
+        java.util.Scanner s = new java.util.Scanner(System.in);
+        run(s);
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n--- Arreglos de Tamaño Fijo y Matrices ---");
         

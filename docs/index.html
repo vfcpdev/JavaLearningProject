@@ -12,6 +12,9 @@
 
     <!-- Navegación Lateral (Sticky Sidebar) -->
     <nav id="sidebar">
+        <center>
+            <img src="https://www.poli.edu.co/themes/custom/ptecnico2023/logo-politecnico-grancolombiano-blue.svg" alt="Politécnico Grancolombiano Logo" style="width: 15vw; min-width:180px; max-width: 200px; margin-bottom: 2rem; background:rgba(255,255,255,0.9); padding:10px; border-radius:10px;">
+        </center>
         <h2>📚 Menú de Contenidos</h2>
         <ul>
             <li><a href="#intro" class="active">0. Arquitectura de Java</a></li>
@@ -47,41 +50,70 @@
 
         <!-- Modulo 0: Arquitectura Master -->
         <section id="intro" class="card fade-in">
-            <h2>0. Análisis Técnico Frontal: ¿Cómo funciona JAVA universalmente?</h2>
+            <h2>0. Fundamentos de Java: Arquitectura, Historia y Sintaxis</h2>
             <p>El principal motor funcional de este material educativo es diseccionar la robusta arquitectura subyacente de Java. A diferencia del software regular compilado en C o Ensamblador, Java funciona con la magia dual del <strong>Bytecode</strong>.</p>
             
             <div class="diagram-container">
                 <img src="C:\Users\vfcp1\.gemini\antigravity\brain\fd7b96b9-b5db-465a-8191-1a840829b03b\java_architecture_diagram_1774232438972.png" alt="Arquitectura Java 3D" class="diagram-img">
-                <p><i>Representación de Compilador transformando código abstracto a motores universales</i></p>
+                <p><i>Representación del Compilador transformando código abstracto universalmente</i></p>
             </div>
 
-            <h3>Etapas obligatorias del Intérprete:</h3>
+            <br/><h3>📖 1. Un Poco de Historia</h3>
+            <p>Java nació en 1991 como el proyecto secreto <b>"Green Project"</b> bajo la tutela de <b>James Gosling</b> en Sun Microsystems. En sus inicios se llamó <i>Oak</i> debido a un roble que Gosling veía por su ventana.</p>
+            <p>Su lema fundacional fue crear un código neutro para programar electrodomésticos, pero terminó dominando la Internet mundial en 1995 al crear el mantra universal: <code>Write Once, Run Anywhere (WORA)</code>.</p>
+
+            <br/><h3>⚙ 2. Etapas obligatorias del Intérprete (Arquitectura):</h3>
             <ul>
-                <li><strong>1. El Origen (<code>.java</code>):</strong> Lugar físico donde los programadores estructuran las clases y métodos usando sintaxis de alto nivel.</li>
-                <li><strong>2. El Compilador (<code>javac</code>):</strong> Centinela que valida la sintaxis y convierte el código humano a jeroglífico de bajo nivel dominado universalmente: El <strong>Bytecode</strong> (<code>.class</code>). No corre en la computadora, es neutro.</li>
-                <li><strong>3. JVM (Máquina Virtual de Java):</strong> Software intérprete preinstalado en dispositivos cliente (Windows, Mac, Linux). Consume el Bytecode on-the-fly e inyecta la memoria RAM nativa permitiendo el dogma universal sagrado: <b>"Escribe tu código una vez, domínalo en cualquier lado (WORA)"</b>.</li>
+                <li><strong>El Origen (<code>.java</code>):</strong> Lugar físico donde programamos las clases usando sintaxis de alto nivel.</li>
+                <li><strong>El Compilador (<code>javac</code>):</strong> Centinela que valida la sintaxis y convierte el código humano al lenguaje intermedio: El <strong>Bytecode</strong> (<code>.class</code>). Este código no corre en hardware, es completamente neutro.</li>
+                <li><strong>JVM (Máquina Virtual de Java):</strong> Un software especializado (parte del <code>JRE</code>) que consume el Bytecode <i>on-the-fly</i> y lo traduce al procesador local (Windows, Mac, Linux) instantáneamente.</li>
+            </ul>
+
+            <br/><h3>⌨ 3. Didáctica de Sintaxis Elemental</h3>
+            <p>Java es de la familia de C++. Obliga al desarrollador a ser disciplinado. La tipificación es <b>Fuerte</b> y es 100% <b>Orientado a Objetos</b>. Nunca verás una variable suelta flotando en el vacío; todo habita dentro de bloques <code>class</code>.</p>
+            <pre><code>
+public class HolaMundo {
+    // Método estático principal: El punto de arranque de la JVM
+    public static void main(String[] args) {
+        // Tipado fuerte: Declaras el INT antes de usarlo
+        int edad = 30; 
+        System.out.println("Sintaxis perfecta. Edad: " + edad);
+    }
+}
+            </code></pre>
+
+            <br/><h3>📦 4. Gestores Corporativos (Maven vs Gradle)</h3>
+            <p>Añadir repositorios arrastrando binarios <code>.jar</code> a mano es cosa del pasado. Hoy en día, utilizamos orquestadores automatizados (CI/CD) para resolver árboles de dependencias masivas.</p>
+            <ul>
+                <li><strong>Apache MAVEN:</strong> El patriarca. Utiliza un archivo rígido en formato XML (<code>pom.xml</code>). Sólido, predecible, ideal para backend empresarial estricto.</li>
+                <li><strong>GRADLE:</strong> El contendiente moderno. Usa scripts ágiles en Kotlin o Groovy (<code>build.gradle</code>). Compila de forma modular y asíncrona, haciéndolo brutalmente rápido (Es el motor obligatorio de Android Studio).</li>
             </ul>
         </section>
 
         <!-- Modulo 1 -->
         <section id="mod1" class="card fade-in">
-            <h2>1. Tipos de Datos (Primitivos y Complejos)</h2>
+            <h2>1. Tipos de Datos Básicos (Memoria RAM)</h2>
             <div class="meta-info"><span class="pill">📄 DataTypesCLI.java | DataTypesGUI.java</span></div>
-            <p>Este proyecto está diseñado metodológicamente para enseñar fundamentos paralelos estructurados mediante ejemplos por consola (CLI) y pantallas (Swing GUI).</p>
             <h3>Objetivo Práctico</h3>
-            <p>Demuestra los tipos primitivos nativos disponibles bajo reserva de memoria estricta en Java (<code>byte, short, int, long, float, double, boolean, char</code>) y los referenciados como (<code>String</code>).</p>
+            <p>Conocer cómo Java estampa la información del mundo real en la memoria RAM utilizando sistemas de clasificación fuertemente tipados. En lugar de estudiar todos los límites numéricos exhaustivos, nos enfocamos en los 4 tipos más útiles del mercado para crear rápidamente un <b>Perfil de Usuario</b>:</p>
+            <ul>
+               <li><code>String</code> (Cadenas de texto. Ej: Nombre)</li>
+               <li><code>int</code> (Enteros exactos matemáticos. Ej: Edad)</li>
+               <li><code>double</code> (Números decimales precisos. Ej: Estatura)</li>
+               <li><code>boolean</code> (Lógica binaria 1/0. Ej: Activo/Inactivo)</li>
+            </ul>
             <h3>Ejecución y Resultados</h3>
-            <p>El sistema en vivo imprime descriptivamente los diferentes tamaños de bit en memoria ram e instanciamientos físicos de variables positivas máximas simulando ser inyectadas un paso a la vez.</p>
+            <p>El sistema en vivo imprime descriptivamente la inyección de estas 4 variables construyendo un perfil humano, evaluando un paso a la vez el impacto en la Memoria RAM.</p>
         </section>
 
         <!-- Modulo 2 -->
         <section id="mod2" class="card fade-in">
-            <h2>2. Operaciones Matemáticas</h2>
+            <h2>2. Operaciones Matemáticas (Simplificadas)</h2>
             <div class="meta-info"><span class="pill">📄 MathOpsCLI.java | MathOpsGUI.java</span></div>
             <h3>Objetivo Práctico</h3>
-            <p>Exposición elemental sobre el uso de operadores aritméticos (<code>+, -, *, /, %</code>) y funciones complementarias de la librería estandarizada <code>java.lang.Math</code> (como raíces cuadradas y potencias numéricas).</p>
+            <p>Demostración didáctica y ultra sencilla del poder de cálculo aritmético de la máquina (<code>resta: -</code>). Reemplazamos la compleja calculadora de múltiples botones por un <b>Calculador de Edades Automático</b>.</p>
             <h3>Ejecución y Resultados</h3>
-            <p>A través de la captura interactiva del usuario (Ej. Numero 1 y 2), el procesador emite el resultado calculadamente blindando crasheos inminentes usando validaciones protectoras frente a divisiones asintóticas computacionales por cero.</p>
+            <p>Al capturar el año de nacimiento del usuario, la JVM hace un cálculo estático utilizando el año actual (2026) y resuelve en centésimas de milisegundo tu edad probable, blindando en caso de arrojar strings inválidos.</p>
         </section>
 
         <!-- Modulo 3 -->
@@ -159,18 +191,26 @@
 
         <!-- Modulo 11 -->
         <section id="mod11" class="card fade-in">
-            <h2>11. Contenedores Exóticos No Lineales (Sets y Maps de Tablas Hash)</h2>
-            <div class="meta-info"><span class="pill">📄 NonLinearContainersCLI.java</span></div>
+            <h2>11. Colecciones Avanzadas (Sets y Maps)</h2>
+            <div class="meta-info"><span class="pill">📄 NonLinearContainersCLI.java | NonLinearContainersGUI.java</span></div>
             <h3>Objetivo Práctico</h3>
-            <p>Aplicación contundente de tablas <code>Hash</code> que no son iterables pero devoran índices O(1). Usa simulaciones de Cortafuegos rechazando IPs y subredes quemadas asíncronamente con un escudo defensivo lógico de Clave duplicada a expensas de la memoria HashSet estricta.</p>
+            <p>Estructuras que rompen la linealidad tradicional de las listas. Muy útiles en la vida diaria:</p>
+            <ul>
+                <li><strong>Conjuntos (HashSet):</strong> Bloquean automáticamente los duplicados matemáticos. Ejemplo: Una lista de correos electrónicos únicos o IDs.</li>
+                <li><strong>Mapas (HashMap):</strong> Diccionarios en pareja (Clave -> Valor). Ejemplo: Una agenda que asocia tu Nombre con tu Teléfono O(1).</li>
+            </ul>
         </section>
 
         <!-- Modulo 12 -->
         <section id="mod12" class="card fade-in">
-            <h2>12. Adopciones del Java Moderno (Registros, PatternMatching)</h2>
-            <div class="meta-info"><span class="pill">📄 ModernJavaCLI.java</span></div>
+            <h2>12. Adopciones de Java Moderno (Records y Streams)</h2>
+            <div class="meta-info"><span class="pill">📄 ModernJavaCLI.java | ModernJavaGUI.java</span></div>
             <h3>Objetivo Práctico</h3>
-            <p>Refactorización de arquetipos hacia las mecánicas pos-JDK 16. Destruye los pesados Getters/Setters anidando la inmutabilidad veloz de las <code>record Variables(int a) {}</code>, elude casteo sucio aplicando <b>instanceOf Match</b>, e inhabilita engorrosos for-loops abrazando Tuberías Algorítmicas Lambda para filtrar nodos de Servidor caídos con <code>stream().filter().forEach()</code>.</p>
+            <p>La programación se ha vuelto más limpia. Aprende cómo Java moderno acorta el código clásico:</p>
+            <ul>
+                <li><strong>Records:</strong> Reemplaza decenas de líneas de <i>Getters y Setters</i> para declarar moldes básicos de datos (Ej: un molde Person con Nombre y Edad).</li>
+                <li><strong>Tuberías con Streams:</strong> En vez de crear bucles <i>For</i> difíciles, usa tuberías lógicas legibles (<code>.filter().forEach()</code>) para por ejemplo, filtrar personas mayores de 18 años instantáneamente.</li>
+            </ul>
         </section>
 
     </main>

@@ -12,36 +12,49 @@ public class JavaHistoryCLI {
 
     public static void run(Scanner scanner) {
         System.out.println("\n=======================================================");
-        System.out.println("   FUNDAMENTOS DE JAVA: HISTORIA, SINTAXIS Y GESTORES");
+        System.out.println("   FUNDAMENTOS DE JAVA: HISTORIA Y SINTAXIS DIDÁCTICA");
         System.out.println("=======================================================");
         
         System.out.println("\n[1] UN POCO DE HISTORIA");
-        System.out.println("Java fue creado por James Gosling en Sun Microsystems (1995).");
-        System.out.println("Originalmente se llamó 'Oak' (Roble). Su meta principal era crear");
-        System.out.println("un lenguaje de programación de uso general concurrente y muy portable.");
-        System.out.print("\nPresiona Enter para avanzar por los fundamentos..."); scanner.nextLine();
+        System.out.println("Java nació en 1995 por James Gosling en Sun Microsystems.");
+        System.out.println("Su nombre original fue 'Oak', pero se transformó en el famoso Java.");
+        System.out.println("¿Sabías que Java fue diseñado originalmente para electrodomésticos interactivos?");
+        System.out.print("\n>>> Escribe 'SI' o 'NO' para confirmar que me lees: ");
+        scanner.nextLine();
         
         System.out.println("\n[2] ARQUITECTURA UNIVERSAL (WORA)");
-        System.out.println("En lugar de compilar a código máquina nativo (como lo hace el ensamblador), Java");
-        System.out.println("compila a una estructura media llamada 'Bytecode' (.class). Este código es leído");
-        System.out.println("en tiempo de ejecución por la Máquina Virtual de Java (JVM) local de cada OS.");
-        System.out.println("- JDK (Java Development Kit): Herramientas completas para programadores.");
-        System.out.println("- JRE (Java Runtime Environment): Entorno aislado que incluye la JVM para reproducir.");
-        System.out.print("\nPresiona Enter para continuar..."); scanner.nextLine();
+        System.out.println("Java no compila en OS Nativo, lo hace en código virtual neutro: Bytecode.");
+        System.out.println("Dicho bytecode solo es legible por la Máquina Virtual de Java (JVM).");
         
-        System.out.println("\n[3] SINTAXIS DEL LENGUAJE");
-        System.out.println("Java es drásticamente fuertemente tipado. Toda variable u objeto exige tipo definido.");
-        System.out.println("Usa la sintaxis de la familia originada del lenguaje C (llaves {}, punto y coma ;).");
-        System.out.println("Paradigma estricto: Orientado a Objetos (POO). ¡Todo está encapsulado en clases!");
-        System.out.print("\nPresiona Enter para continuar..."); scanner.nextLine();
+        System.out.println("\n[3] PRÁCTICA SINTÁCTICA (SIMULACIÓN INTERACTIVA)");
+        System.out.println("Vamos a declarar tu primera variable. Java es fuertemente tipado.");
+        System.out.println("Paso 1: Para crear un número entero que valga 50, típicamente escribimos:");
+        System.out.println("int edad = 50;");
+        System.out.print("\n>>> Por favor, escribe exactamente esa instrucción en consola: ");
+        String ans1 = scanner.nextLine();
         
-        System.out.println("\n[4] GESTORES MASIVOS DE PROYECTOS Y LIBRERÍAS");
-        System.out.println("- Apache Maven: Emplea archivos (pom.xml) totalmente basados en árbol XML");
-        System.out.println("  para autodescargar las dependencias requeridas y gobernar fases del build.");
-        System.out.println("- Gradle: Gestor moderno e incremental. Aplica diccionarios build.gradle listados");
-        System.out.println("  para compilar en paralelo rindiendo mucho más rápido que Maven antiguo.");
+        if(ans1.replaceAll("\\s","").contains("intedad=50;")) {
+            System.out.println("¡Excelente! Has declarado correctamente una variable tipada.");
+        } else {
+            System.out.println("Tu sintaxis varió un poco, pero lo importante es entender el tipado fuerte.");
+        }
         
-        System.out.println("\nPresiona Enter para regresar al Menú Central del Motor...");
+        System.out.println("\nPaso 2: Ahora imprimámosla. En Java decimos:");
+        System.out.println("System.out.println(edad);");
+        System.out.print("\n>>> Intenta tipear este comando para ver la magia: ");
+        scanner.nextLine();
+        
+        System.out.println("\n[RESULTADO DEL COMPILADOR]");
+        System.out.println("> 50");
+        System.out.println("¡Muy bien hecho!");
+
+        System.out.println("\n[4] GESTORES DE PROYECTOS");
+        System.out.println("En la vida real, compilar a mano es pesado. La industria usa gestores corporativos.");
+        System.out.println("> Maven: Usa archivos XML (pom.xml) para gestionar dependencias de internet.");
+        System.out.println("> Gradle: Usa scripts ágiles y súper rápidos (muy usado en Android Studio).");
+        
+        System.out.println("\n=======================================================");
+        System.out.println("Presiona Enter para regresar al Menú Central del Motor...");
         if(scanner.hasNextLine()) scanner.nextLine();
     }
 }

@@ -1,27 +1,44 @@
 package com.javalearning.cli;
 
 import java.util.Scanner;
+import java.time.Year;
 
 public class MathOpsCLI {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        run(scanner);
+        scanner.close();
+    }
+    
     public static void run(Scanner scanner) {
-        System.out.println("\n--- Operaciones Matemáticas en Java ---");
-        int a = 15;
-        int b = 4;
+        System.out.println("\n=======================================================");
+        System.out.println("   MÓDULO 2 SENCILLO: ARITMÉTICA Y EDADES (CLI)");
+        System.out.println("=======================================================");
         
-        System.out.println("Variables base -> a = " + a + ", b = " + b);
-        System.out.println("Suma (a + b): " + (a + b));
-        System.out.println("Resta (a - b): " + (a - b));
-        System.out.println("Multiplicación (a * b): " + (a * b));
-        System.out.println("División Entera (a / b): " + (a / b));
-        System.out.println("Módulo o Resto (a % b): " + (a % b));
+        System.out.println("En este ejercicio usaremos la resta matemática básica de Java '-'.");
         
-        System.out.println("\nUso de la clase Math:");
-        System.out.println("Raíz cuadrada de 25 (Math.sqrt(25)): " + Math.sqrt(25));
-        System.out.println("Potencia 2^3 (Math.pow(2, 3)): " + Math.pow(2, 3));
-        System.out.println("Valor máximo (Math.max(a, b)): " + Math.max(a, b));
+        int currentYear = Year.now().getValue();
         
-        System.out.println("\nPresiona Enter para continuar...");
-        scanner.nextLine();
-        scanner.nextLine();
+        System.out.print("\n>>> Por favor, ingresa tu código aritmético (Año de Nacimiento Ej: 1995): ");
+        String textInput = scanner.nextLine();
+        
+        try {
+            int birthYear = Integer.parseInt(textInput);
+            
+            // Operación matemática súper sencilla
+            int resultAge = currentYear - birthYear;
+            
+            System.out.println("\n[SISTEMA JVM CALCULANDO...]");
+            System.out.println("Fórmula interna: " + currentYear + " - " + birthYear);
+            System.out.println("\n¡Tu edad apróximada en el periodo contable actual es de: " + resultAge + " años!");
+            
+        } catch(NumberFormatException e) {
+            System.out.println("\n[ERROR]: El procesador matemático de Java no puede restar letras o símbolos.");
+        }
+        
+        System.out.println("\n=======================================================");
+        System.out.println("Presiona Enter finalizar el laboratorio y volver...");
+        if(scanner.hasNextLine()) scanner.nextLine();
     }
 }

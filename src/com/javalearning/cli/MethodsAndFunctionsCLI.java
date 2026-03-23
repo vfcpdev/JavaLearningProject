@@ -33,6 +33,11 @@ public class MethodsAndFunctionsCLI {
         return n * calcularFactorial(n - 1); // Llamada recursiva
     }
 
+    public static void main(String[] args) {
+        java.util.Scanner s = new java.util.Scanner(System.in);
+        run(s);
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n--- Funciones y Métodos ---");
         

@@ -3,6 +3,11 @@ package com.javalearning.cli;
 import java.util.Scanner;
 
 public class ExceptionsCLI {
+    public static void main(String[] args) {
+        java.util.Scanner s = new java.util.Scanner(System.in);
+        run(s);
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n--- Manejo de Excepciones ---");
         System.out.println("\nEn Java podemos prevenir que el programa se cuelgue al haber errores, usando Bloques Try-Catch.");

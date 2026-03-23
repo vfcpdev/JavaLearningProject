@@ -1,68 +1,69 @@
 package com.javalearning.gui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.time.Year;
 
 public class MathOpsGUI {
+    
     public MathOpsGUI() {
-        JFrame frame = new JFrame("Calculadora de Operaciones Matemáticas");
-        frame.setSize(400, 300);
+        JFrame frame = new JFrame("Calculadora Sencilla de Edad Biológica (Matemáticas Básicas)");
+        frame.setSize(500, 350);
         frame.setLocationRelativeTo(null);
+        frame.getContentPane().setBackground(new Color(15, 56, 90)); // Pantone Dark Blue
         
-        JPanel panel = new JPanel(new GridLayout(6, 2, 8, 8));
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        JPanel panel = new JPanel(new GridLayout(4, 1, 15, 15));
+        panel.setBackground(new Color(15, 56, 90));
+        panel.setBorder(new EmptyBorder(30, 30, 30, 30));
         
-        JLabel lblNum1 = new JLabel("Número 1:");
-        JTextField txtNum1 = new JTextField("15");
+        JLabel lblTitle = new JLabel("Ingrese su Año de Nacimiento (Ej. 1995):", SwingConstants.CENTER);
+        lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        lblTitle.setForeground(new Color(31, 178, 222)); // Pantone Light Blue
         
-        JLabel lblNum2 = new JLabel("Número 2:");
-        JTextField txtNum2 = new JTextField("4");
+        JTextField txtYear = new JTextField();
+        txtYear.setHorizontalAlignment(JTextField.CENTER);
+        txtYear.setFont(new Font("Consolas", Font.BOLD, 22));
+        txtYear.setBackground(new Color(35, 45, 60));
+        txtYear.setForeground(new Color(166, 206, 56)); // Green Pantone Hacker
+        txtYear.setCaretColor(Color.WHITE);
+        txtYear.setBorder(BorderFactory.createLineBorder(new Color(31, 178, 222), 2));
         
-        JButton btnSumar = new JButton("Sumar");
-        JButton btnRestar = new JButton("Restar");
-        JButton btnMult = new JButton("Multiplicar");
-        JButton btnDiv = new JButton("Dividir");
+        JButton btnCalcular = new JButton("Realizar Operación Aritmética");
+        btnCalcular.setBackground(new Color(251, 175, 23)); // Pantone Orange
+        btnCalcular.setForeground(new Color(15, 56, 90));
+        btnCalcular.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        btnCalcular.setFocusPainted(false);
+        btnCalcular.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        JLabel lblResult = new JLabel("Resultado: ", SwingConstants.CENTER);
-        lblResult.setFont(new Font("Arial", Font.BOLD, 14));
-        lblResult.setForeground(Color.BLUE);
+        JLabel lblResult = new JLabel("Esperando datos matemáticos...", SwingConstants.CENTER);
+        lblResult.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblResult.setForeground(new Color(236, 6, 119)); // Pantone Magenta Pink
         
-        ActionListener operacion = e -> {
+        // Listeners
+        btnCalcular.addActionListener(e -> {
             try {
-                double n1 = Double.parseDouble(txtNum1.getText());
-                double n2 = Double.parseDouble(txtNum2.getText());
-                double res = 0;
-                String op = ((JButton) e.getSource()).getText();
+                int birthYear = Integer.parseInt(txtYear.getText().trim());
+                int currentYear = Year.now().getValue();
                 
-                switch (op) {
-                    case "Sumar": res = n1 + n2; break;
-                    case "Restar": res = n1 - n2; break;
-                    case "Multiplicar": res = n1 * n2; break;
-                    case "Dividir": 
-                        if(n2 == 0) {
-                            JOptionPane.showMessageDialog(frame, "No se puede dividir por cero", "Error", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                        res = n1 / n2; 
-                        break;
+                int age = currentYear - birthYear;
+                
+                if (age < 0 || age > 130) {
+                    lblResult.setText("❌ Edad irracional: " + age + " años!");
+                    lblResult.setForeground(Color.RED);
+                } else {
+                    lblResult.setText("✅ ¡Tu edad es " + age + " años!");
+                    lblResult.setForeground(new Color(166, 206, 56)); // Green Pantone
                 }
-                lblResult.setText("Resultado: " + res);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(frame, "Ingrese números válidos", "Error", JOptionPane.ERROR_MESSAGE);
+                lblResult.setText("❌ Por favor digite números válidos entero.");
+                lblResult.setForeground(Color.RED);
             }
-        };
+        });
         
-        btnSumar.addActionListener(operacion);
-        btnRestar.addActionListener(operacion);
-        btnMult.addActionListener(operacion);
-        btnDiv.addActionListener(operacion);
-        
-        panel.add(lblNum1); panel.add(txtNum1);
-        panel.add(lblNum2); panel.add(txtNum2);
-        panel.add(btnSumar); panel.add(btnRestar);
-        panel.add(btnMult); panel.add(btnDiv);
-        panel.add(new JLabel("")); // Espacio vacío
+        panel.add(lblTitle);
+        panel.add(txtYear);
+        panel.add(btnCalcular);
         panel.add(lblResult);
         
         frame.add(panel);

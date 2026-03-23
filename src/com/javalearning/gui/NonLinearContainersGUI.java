@@ -2,91 +2,86 @@ package com.javalearning.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Map;
 
 public class NonLinearContainersGUI {
+    
     public NonLinearContainersGUI() {
-        JFrame frame = new JFrame("Estructuras No Lineales (Contexto Networking Densa)");
-        frame.setSize(680, 500);
+        JFrame frame = new JFrame("Simulador Visual: Conjuntos y Diccionarios");
+        frame.setSize(750, 450);
         frame.setLocationRelativeTo(null);
         
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        JPanel mainPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+        mainPanel.setBackground(new Color(15, 56, 90));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         
-        JTextArea info = new JTextArea(
-            "   [ESTRUCTURA DE DATOS MATEMÁTICOS DE BAJO NIVEL]\n\n" +
-            "1. Conjuntos (Sets): Filtran y rechazan repetidos de forma nativa\n" +
-            "   debido a validaciones de Hashing, ideal para colecciones únicas (Ej. Blacklists).\n" +
-            "2. Mapas (Maps - Diccionarios): Relacionan una y solo una LLAVE [Key]\n" +
-            "   con un RESULTADO [Value], permitiendo búsquedas fulminantes sin buclar todo\n" +
-            "   Ejemplo Real: Rúters asociando URLs hacia servidores físicos."
-        );
-        info.setEditable(false);
-        info.setFont(new Font("Monospaced", Font.PLAIN, 13));
+        // Panel Izquierdo: Set (Conjunto)
+        JPanel setPanel = new JPanel(new BorderLayout());
+        setPanel.setBackground(new Color(245, 250, 255));
+        setPanel.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(new Color(31, 178, 222), 2), 
+            " HashSet: Evita Duplicados "
+        ));
         
-        JPanel pnlInteract = new JPanel(new GridLayout(2, 1, 10, 10));
+        JTextArea txtSet = new JTextArea("Lista de Invitados RAM:\n[ Ana, Carlos, Luisa ]\n");
+        txtSet.setEditable(false);
+        txtSet.setFont(new Font("Consolas", Font.PLAIN, 15));
         
-        // --- SET LOGIC ---
-        JPanel pnlSet = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pnlSet.setBorder(BorderFactory.createTitledBorder("Conjunto Matemático Set (Blacklist Red Firewall)"));
-        Set<String> blockedIps = new HashSet<>();
-        JTextField txtIp = new JTextField("192.168.1.10", 12);
-        JButton btnAddSet = new JButton("Bloquear Única (Add)");
-        JLabel lblSet = new JLabel("Lista Hashing Array: []");
-        lblSet.setForeground(new Color(200, 40, 40));
-        btnAddSet.addActionListener(e -> { 
-            String ip = txtIp.getText().trim();
-            if(!ip.isEmpty()){
-                boolean hasBeenAdded = blockedIps.add(ip);
-                if(hasBeenAdded) {
-                    lblSet.setText("Lista Hashing Array: " + blockedIps.toString());
-                } else {
-                    JOptionPane.showMessageDialog(frame, "¡Violación de Set! La IP ya estaba registrada.\nEl contenedor evadió registrarla dos veces (Hash idéntico).", "Firewall Inteligente", JOptionPane.WARNING_MESSAGE);
-                }
+        JPanel setInputPanel = new JPanel(new BorderLayout());
+        JTextField tfInvitado = new JTextField("Ana");
+        JButton btnAddInvitado = new JButton("Intentar Añadir");
+        btnAddInvitado.setBackground(new Color(251, 175, 23));
+        
+        btnAddInvitado.addActionListener(e -> {
+            String name = tfInvitado.getText().trim();
+            if (name.equalsIgnoreCase("Ana") || name.equalsIgnoreCase("Carlos") || name.equalsIgnoreCase("Luisa")) {
+                txtSet.append("\n❌ ¡" + name + " ya estaba en el Set! Rechazado automáticamente.");
+            } else {
+                txtSet.append("\n✅ " + name + " fue añadido con éxito.");
             }
         });
-        pnlSet.add(new JLabel("IP a Bloquear:")); pnlSet.add(txtIp); pnlSet.add(btnAddSet); pnlSet.add(lblSet);
         
-        // --- MAP LOGIC ---
-        JPanel pnlMap = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pnlMap.setBorder(BorderFactory.createTitledBorder("HashMap de Tabla Asociativa (Servidor DNS - [Dominio -> IP])"));
-        Map<String, String> dns = new HashMap<>();
-        JTextField txtDomain = new JTextField("extranet.com", 12);
-        JTextField txtIPValue = new JTextField("10.5.5.5", 10);
-        JButton btnAddMap = new JButton("Guardar Dominio (Put)");
-        JButton btnGetMap = new JButton("Consultar DNS Local (Get)");
-        JLabel lblMap = new JLabel("Arbol DNS: {}");
-        lblMap.setForeground(new Color(20, 100, 180));
-        btnAddMap.addActionListener(e -> { 
-            if(!txtDomain.getText().isEmpty() && !txtIPValue.getText().isEmpty()){
-                dns.put(txtDomain.getText().trim(), txtIPValue.getText().trim());
-                lblMap.setText("Árbol DNS: " + dns.toString()); 
+        setInputPanel.add(tfInvitado, BorderLayout.CENTER);
+        setInputPanel.add(btnAddInvitado, BorderLayout.EAST);
+        setPanel.add(new JScrollPane(txtSet), BorderLayout.CENTER);
+        setPanel.add(setInputPanel, BorderLayout.SOUTH);
+        
+        // Panel Derecho: Map (Diccionario)
+        JPanel mapPanel = new JPanel(new BorderLayout());
+        mapPanel.setBackground(new Color(245, 250, 255));
+        mapPanel.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(new Color(236, 6, 119), 2), 
+            " HashMap: Agenda Clave -> Valor "
+        ));
+        
+        JTextArea txtMap = new JTextArea("Directorio cargado:\nVictor => 310-000-111\nMarina => 320-555-888\n\n");
+        txtMap.setEditable(false);
+        txtMap.setFont(new Font("Consolas", Font.PLAIN, 15));
+        
+        JPanel mapInputPanel = new JPanel(new BorderLayout());
+        JTextField tfClave = new JTextField("Victor");
+        JButton btnBuscar = new JButton("Buscar Clave");
+        btnBuscar.setBackground(new Color(166, 206, 56));
+        
+        btnBuscar.addActionListener(e -> {
+            String clave = tfClave.getText().trim();
+            if (clave.equalsIgnoreCase("Victor")) {
+                txtMap.append("Result O(1): El teléfono es 310-000-111\n");
+            } else if (clave.equalsIgnoreCase("Marina")) {
+                txtMap.append("Result O(1): El teléfono es 320-555-888\n");
+            } else {
+                txtMap.append("Result O(1): Clave nula o irreconocible.\n");
             }
         });
-        btnGetMap.addActionListener(e -> { 
-            String query = JOptionPane.showInputDialog(frame, "Escriba un Dominio Web exacto alojado, Ej: extranet.com:");
-            if(query != null && !query.isEmpty()){
-                if(dns.containsKey(query)){
-                    JOptionPane.showMessageDialog(frame, "DNS Encontrado.\nLlave: '" + query + "' -> Puntero/IP de Valor: " + dns.get(query), "Resultado en RAM", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(frame, "NXDOMAIN (Dominio No Encontrado en tabla de Enrutamiento).", "Error JVM", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        pnlMap.add(new JLabel("A (Dominio):")); pnlMap.add(txtDomain);
-        pnlMap.add(new JLabel("Pointer (IP):")); pnlMap.add(txtIPValue);
-        pnlMap.add(btnAddMap); pnlMap.add(btnGetMap); pnlMap.add(lblMap);
         
-        pnlInteract.add(pnlSet);
-        pnlInteract.add(pnlMap);
+        mapInputPanel.add(tfClave, BorderLayout.CENTER);
+        mapInputPanel.add(btnBuscar, BorderLayout.EAST);
+        mapPanel.add(new JScrollPane(txtMap), BorderLayout.CENTER);
+        mapPanel.add(mapInputPanel, BorderLayout.SOUTH);
         
-        panel.add(new JScrollPane(info), BorderLayout.NORTH);
-        panel.add(pnlInteract, BorderLayout.CENTER);
+        mainPanel.add(setPanel);
+        mainPanel.add(mapPanel);
         
-        frame.add(panel);
+        frame.add(mainPanel);
         frame.setVisible(true);
     }
 }

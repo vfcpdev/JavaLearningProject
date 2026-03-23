@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataStructuresCLI {
+    public static void main(String[] args) {
+        java.util.Scanner s = new java.util.Scanner(System.in);
+        run(s);
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n--- Estructuras de Datos en Java ---");
         
