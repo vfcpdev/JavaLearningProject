@@ -9,53 +9,56 @@ import java.util.PriorityQueue;
 
 public class StandardContainersCLI {
     public static void run(Scanner scanner) {
-        System.out.println("\n--- Contenedores Estándar de Datos (Contexto de Infraestructura y SO) ---");
+        System.out.println("\n=== VISUALIZADOR CLI: EJECUCIÓN PASO A PASO (LIFO / FIFO) ===");
         
-        System.out.println("\n1. LISTAS Y ARREGLOS (ArrayList) -> Nodos de Balanceo de Carga");
-        ArrayList<String> balancerIps = new ArrayList<>();
-        balancerIps.add("10.0.0.51");
-        balancerIps.add("10.0.0.52");
-        System.out.println("  -> IPs activas en el Load Balancer: " + balancerIps);
-        
-        System.out.println("\n2. PILAS (Stacks - LIFO) -> Historial de Navegador Web (El clásico botón 'Atrás')");
+        System.out.println("\n--- [LIFO] EJECUTANDO: Pila / Stack (Historial Web) ---");
         Stack<String> webHistory = new Stack<>();
-        System.out.println("  -> Simulación automática: Navegando profundo en la web (PUSH de Páginas)...");
-        for (int i = 1; i <= 6; i++) {
+        System.out.println("  -> EXPLICACIÓN: Se inicializó el Stack genérico.");
+        
+        System.out.println("  -> CÓDIGO EJECUTANDOSE EN BUCLE: webHistory.push(\"Dirección \" + i);");
+        for (int i = 1; i <= 3; i++) {
             webHistory.push("Dirección " + i);
-            System.out.println("     Visitando nueva URL: " + webHistory.peek());
+            System.out.println("     ++ Inyectando PUSH O(1): " + webHistory.peek());
         }
         
-        System.out.println("  -> Memoria temporal de navegación retenida en RAM: " + webHistory);
-        System.out.print("  -> (EJERCICIO) Oprime Enter para dar clic al botón 'ATRÁS' tres veces (Extracción Pop por LIFO)...");
+        System.out.println("  -> ESTADO DE LA MEMORIA: " + webHistory);
+        System.out.print("  -> (SIMULADOR) Oprime Enter para dar clic al botón 'ATRÁS' tres veces mediante CLI...");
         scanner.nextLine();
         
-        System.out.println("     1. Pop: Cerramos (" + webHistory.pop() + "). Ahora ves la " + webHistory.peek());
-        System.out.println("     2. Pop: Cerramos (" + webHistory.pop() + "). Ahora ves la " + webHistory.peek());
-        System.out.println("     3. Pop: Cerramos (" + webHistory.pop() + "). Ahora ves la " + webHistory.peek());
-        System.out.println("  -> Historial actual remanente tras aplicar reversión continua LIFO: " + webHistory);
+        for(int x = 1; x <= 3; x++) {
+            System.out.println("\n>> LÍNEA EJECUTADA: String url = webHistory.pop();");
+            System.out.println("   // EXPLICACIÓN: El método genérico destruye la posición superior de la Tabla de Pilas.");
+            System.out.println("   -> Has pulsado Atrás (POP). Se esfumó temporalmente: [" + webHistory.pop() + "]");
+            System.out.println("   -> Quedan remanentes: " + webHistory.size());
+        }
         
-        System.out.println("\n3. COLAS (Queues - FIFO) -> Gestor de Descargas Múltiples del Navegador");
+        System.out.println("\n--- [FIFO] EJECUTANDO: Cola / Queue (Descargas Web) ---");
         Queue<String> managerDescargas = new LinkedList<>();
-        System.out.println("  -> Empujando peticiones de descarga (OFFER)...");
-        managerDescargas.offer("Instalador_JDK_21.exe");
-        managerDescargas.offer("Juego_Steam.zip");
-        managerDescargas.offer("Documento_Guia.pdf");
-        System.out.println("  -> Línea de descargas procesándose por orden de llegada (El primero en iniciar es el primero en acabar): " + managerDescargas);
-        System.out.println("  -> Servidor completando al 100% y sacando la primera petición de la fila (POLL): [" + managerDescargas.poll() + "]");
-        System.out.println("  -> Servidor completando la siguiente (POLL): [" + managerDescargas.poll() + "]");
-        System.out.println("  -> Peticiones todavía esperando en la memoria Queue: " + managerDescargas);
+        System.out.println("   // EXPLICACIÓN: La Cola hereda Listas Enlazadas para respetar las posiciones de frente horizontal.");
         
-        System.out.println("\n4. COLAS DE PRIORIDAD (Priority Queues) -> Planificador de Procesos (Scheduler)");
+        System.out.println("\n>> LÍNEA EJECUTADA: managerDescargas.offer(\"archivo.zip\");");
+        managerDescargas.offer("Java_JDK.exe");
+        managerDescargas.offer("Manual_PDF.pdf");
+        System.out.println("   -> EXPLICACIÓN: Offer inyecta el valor AL FINAL de los nodos.");
+        System.out.println("   -> RAM ACTUAL: " + managerDescargas);
+        
+        System.out.println("\n>> LÍNEA EJECUTADA: String completado = managerDescargas.poll();");
+        System.out.println("   -> EXPLICACIÓN: Respetando el orden orgánico de llegada, finaliza mágicamente la descarga del primer archivo.");
+        System.out.println("   -> DESCARGADO/PROCESADO: [" + managerDescargas.poll() + "]");
+        System.out.println("   -> AÚN ESPERANDO: " + managerDescargas);
+        
+        System.out.println("\n>> LÍNEA EJECUTADA: PriorityQueue<Integer> pq = new PriorityQueue<>();");
         PriorityQueue<Integer> scheduler = new PriorityQueue<>();
-        // Simulando PID y Prioridad (Prioridad 1 = Root/Kernel, 50 = Usuario estándar)
-        scheduler.offer(50); // Proceso de usuario regular
-        scheduler.offer(1);  // Proceso crítico del Kernel
-        scheduler.offer(20); // Servicio de red local
-        System.out.println("  -> Procesos en cola con niveles de prioridad (1, 50, 20).");
-        System.out.println("  -> El planificador CPU (Scheduler) otorga poder al hilo con MAYOR prioridad (menor constante '1'): Se atendió Nivel " + scheduler.poll());
+        System.out.println("   // EXPLICACIÓN: Usando Cola de Prioridad. Procesará el número entero más pequeño sin importar su orden de llegada.");
         
-        System.out.println("\nPresiona Enter para volver al Menú...");
-        scanner.nextLine();
+        scheduler.offer(50); 
+        scheduler.offer(1);  
+        scheduler.offer(20); 
+        System.out.println("\n>> LÍNEA EJECUTADA: scheduler.poll();");
+        System.out.println("   -> RAM CARGADA CON: (50), (1), (20).");
+        System.out.println("   -> PROCESO QUE TOMÓ LA DELANTERA (POLL DE PRIORIDAD 1 URGENCIA MÁXIMA): [" + scheduler.poll() + "]");
+        
+        System.out.println("\nPresiona Enter para cerrar el modo visualizador CLI devolviéndote al menú principal...");
         scanner.nextLine();
     }
 }
