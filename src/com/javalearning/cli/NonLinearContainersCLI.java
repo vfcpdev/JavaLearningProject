@@ -14,12 +14,17 @@ public class NonLinearContainersCLI {
         System.out.println("   (Los Sets garantizan matemáticamente que no haya elementos duplicados en RAM)");
         Set<String> macAddresses = new HashSet<>();
         macAddresses.add("00:1A:2B:3C:4D:5E");
-        macAddresses.add("AA:BB:CC:DD:EE:FF");
-        System.out.println("  -> MACs únicas cargadas en switch virtual: " + macAddresses);
+        System.out.println("  -> MAC base registrada de fábrica en el switch lógico: " + macAddresses);
         
-        System.out.println("  -> ¡Intentando registrar la MAC falsificada/duplicada 'AA:BB:CC:DD:EE:FF' nuevamente!");
-        boolean isAdded = macAddresses.add("AA:BB:CC:DD:EE:FF"); // Devuelve booleano
-        System.out.println("  -> ¿El compilador la agregó? (Aceptada = true / Rechazada = false): " + isAdded);
+        System.out.print("  -> (EJERCICIO) Por favor, simula como admin y digita una nueva MAC (Ej: AA:BB:CC:DD:EE:FF): ");
+        String customMac = scanner.nextLine();
+        macAddresses.add(customMac);
+        
+        System.out.print("  -> (EJERCICIO) ¡Atención! Intenta violar la seguridad registrando ESA MISMÍSIMA MAC repetida: ");
+        String clonedMac = scanner.nextLine();
+        
+        boolean isAdded = macAddresses.add(clonedMac); // Evalúa si la colisión Hashing lo desvió
+        System.out.println("  -> ¿El compilador logró inyectar la repetición? (true = si, false = Lo evadió con éxito): " + isAdded);
         System.out.println("  -> Tabla interna intacta (sólo exclusivas): " + macAddresses);
         
         System.out.println("\n2. MAPAS (HashMaps) -> Tablas de Resolución DNS Locales");

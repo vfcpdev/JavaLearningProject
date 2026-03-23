@@ -12,6 +12,7 @@ import com.javalearning.cli.FixedSizeArraysCLI;
 import com.javalearning.cli.StandardContainersCLI;
 import com.javalearning.cli.GraphicalCustomizationCLI;
 import com.javalearning.cli.NonLinearContainersCLI;
+import com.javalearning.cli.ModernJavaCLI;
 import com.javalearning.gui.MainGUI;
 
 public class Main {
@@ -40,7 +41,8 @@ public class Main {
             System.out.println("9. Contenedores Estándar de Datos (Ejemplos CLI)");
             System.out.println("10. Personalización Gráfica Swing (Ejemplos CLI)");
             System.out.println("11. Contenedores Estándar No Lineales (Sets y Mapas)");
-            System.out.println("12. Lanzar Interfaz Gráfica (Swing GUI)");
+            System.out.println("12. Características Modernas de Java (Records, Pattern Matching, Streams)");
+            System.out.println("13. Lanzar Interfaz Gráfica (Swing GUI)");
             System.out.println("0. Salir");
             System.out.print("Selecciona una opción: ");
             
@@ -81,6 +83,9 @@ public class Main {
                         NonLinearContainersCLI.run(scanner);
                         break;
                     case 12:
+                        ModernJavaCLI.run(scanner);
+                        break;
+                    case 13:
                         System.out.println("\nLanzando la Interfaz Gráfica...");
                         MainGUI.launchGUI();
                         // No rompemos el programa por si se cierra la GUI y quieren usar CLI de nuevo
