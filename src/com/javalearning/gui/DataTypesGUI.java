@@ -2,8 +2,7 @@ package com.javalearning.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
+
 
 public class DataTypesGUI {
     
@@ -43,7 +42,7 @@ public class DataTypesGUI {
         bottomPanel.setBackground(Color.DARK_GRAY);
         
         // Botón step-by-step
-        JButton btnNext = new JButton("▶️ Iniciar compilación / Simular Siguiente Línea [Step Over]");
+        JButton btnNext = new JButton("Ver Ejemplo (Siguiente Línea)");
         btnNext.setFont(new Font("Segoe UI", Font.BOLD, 15));
         btnNext.setFocusPainted(false);
         btnNext.setBackground(new Color(30, 130, 240));

@@ -7,6 +7,13 @@ import java.util.Queue;
 import java.util.PriorityQueue;
 
 public class StandardContainersCLI {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        run(scanner);
+        scanner.close();
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n=== VISUALIZADOR CLI: EJECUCIÓN PASO A PASO (LIFO / FIFO) ===");
         

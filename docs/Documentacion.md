@@ -1,10 +1,40 @@
-# Documentación del Proyecto: Aprendizaje de Java (CLI & GUI)
+# Documentación Técnica del Proyecto Java Learning
 
+## Diseño de Material y Créditos Institucionales
+* **Profesor Arquitectónico Universitario**: Ing. Mg. Víctor Castro
+* **Correo de Comunicación**: `vfcastro@poligran.edu.co`
+
+---
+
+## 0. Análisis Técnico Frontal: ¿Cómo funciona JAVA universalmente?
+
+El principal motor funcional de este material educativo es diseccionar la robusta arquitectura subyacente de Java. A diferencia del software regular C o ensamblador, Java funciona con la magia dual del Bytecode:
+
+![Diagrama Fundamental 3D de Arquitectura Java](C:\Users\vfcp1\.gemini\antigravity\brain\fd7b96b9-b5db-465a-8191-1a840829b03b\java_architecture_diagram_1774232438972.png)
+
+### Etapas obligatorias del intérprete:
+1. **El Origen (`.java`)**: Lugar donde los humanos programan estructuras relógicas usando una notación estructurada orientada a objetos (POO).
+2. **El Compilador Intermedio (`javac`)**: Un centinela que devora tu código y lo convierte forzosamente a un leguaje jeroglífico de bajo nivel dominado universalmente: El **Bytecode** (`.class`). No corre en la computadora, corre de forma neutra.
+3. **El Engranaje Central (`JVM` - Java Virtual Machine)**: Cada dispositivo físico (El super-servidor, tu ordenador Windows o la terminal Linux) tiene instalada una máquina virtual. Esta "Computadora dentro de la computadora", consume el Bytecode estandarizado e inyecta traducción en tiempo local ordenando en tiempo real al cerebro de tu procesador (On-The-Fly) permitiendo el dogma universal sagrado de Java: **\*Escribe tu código una vez, córrelo y domínalo en cualquier lado (\*WORA)*.**
+
+```mermaid
+graph TD
+    A([Código Humano - file.java]) --> B[JDK: Compilador Universal 'Javac']
+    B -->|Genera Puente Abstracto| C[[Archivo Neutro ByteCode .class]]
+    C --> D{Entorno JVM Instalado: JRE}
+    D -->|Conversión RAM Hardware| E(Windows OS)
+    D -->|Conversión RAM Hardware| F(Servidor Web Linux Base)
+    D -->|Conversión RAM Hardware| G(Sistema Mac Embebido)
+    style C fill:#f9d0c4,stroke:#333,stroke-width:2px
+    style D fill:#ddddff,stroke:#333,stroke-width:4px
+```
+
+---
+
+## 1. Tipos de Datos (Primitivos y Complejos)
 Este proyecto está diseñado metódicamente para enseñar de forma paralela conceptos estructurados, algoritmia y programación orientada a objetos en Java mediante ejemplos por consola (CLI) y pantallas de usuario interactivas (Swing GUI). 
 
 A continuación se detalla cada uno de los temas y ejercicios formalmente desarrollados a lo largo del material.
-
-## 1. Tipos de Datos (Primitivos y Complejos)
 * **Nombres de Código**: `DataTypesCLI.java`, `DataTypesGUI.java`
 * **Explicación**: Demuestra los tipos primitivos nativos disponibles bajo reserva de memoria estricta en Java (byte, short, int, long, float, double, boolean, char) y los tipos de referencia básicos (clase `String`).
 * **Datos a usar**: El sistema utiliza variables auto-inyectadas estáticamente para visualización.

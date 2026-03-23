@@ -3,6 +3,13 @@ package com.javalearning.cli;
 import java.util.Scanner;
 
 public class DataTypesCLI {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        run(scanner);
+        scanner.close();
+    }
+
     public static void run(Scanner scanner) {
         System.out.println("\n=== LABORATORIO INTERACTIVO CLI: TIPOS DE DATOS (EJECUCIÓN LINEAL) ===");
         System.out.println("En este ejercicio el compilador interpretará las variables paso a paso deteniéndose.");

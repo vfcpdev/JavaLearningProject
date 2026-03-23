@@ -36,41 +36,46 @@ public class MainGUI {
             leftPanel.add(titleList, BorderLayout.NORTH);
 
             String[] titles = {
-                "1. Tipos de Datos y Memoria", "2. Operadores Matemáticos",
-                "3. Interfaz de Datos (Base)", "4. Estructuras Algorítmicas",
-                "5. Funciones y Métodos", "6. Prog. Orientada a Objetos",
-                "7. Manejo de Excepciones", "8. Arreglos y Matrices Fijas",
-                "9. Contenedores Estándar (LIFO/FIFO)", "10. Personalización de UI/UX",
-                "11. Contenedores No Lineales (Sets/Maps)", "12. Modern Java (Records/Streams)"
+                "1. Java Fundamentos (Historia/Arquitectura)", "2. Tipos de Datos y Memoria", "3. Operadores Matemáticos",
+                "4. Interfaz de Datos (Base)", "5. Estructuras Algorítmicas",
+                "6. Funciones y Métodos", "7. Prog. Orientada a Objetos",
+                "8. Manejo de Excepciones", "9. Arreglos y Matrices Fijas",
+                "10. Contenedores Estándar (LIFO/FIFO)", "11. Personalización de UI/UX",
+                "12. Contenedores No Lineales (Sets/Maps)", "13. Modern Java (Records/Streams)",
+                "14. Acerca del Diseñador (Autoría)"
             };
 
             String[] cliClasses = {
-                "DataTypesCLI", "MathOpsCLI", "DataStructuresCLI", "AlgorithmicStructuresCLI",
+                "JavaHistoryCLI", "DataTypesCLI", "MathOpsCLI", "DataStructuresCLI", "AlgorithmicStructuresCLI",
                 "MethodsAndFunctionsCLI", "OOPCLI", "ExceptionsCLI", "FixedSizeArraysCLI",
-                "StandardContainersCLI", "GraphicalCustomizationCLI", "NonLinearContainersCLI", "ModernJavaCLI"
+                "StandardContainersCLI", "GraphicalCustomizationCLI", "NonLinearContainersCLI", "ModernJavaCLI",
+                "AboutCLI"
             };
 
             String[] guiClasses = {
-                "DataTypesGUI", "MathOpsGUI", "DataStructuresGUI", "AlgorithmicStructuresGUI",
+                "JavaHistoryGUI", "DataTypesGUI", "MathOpsGUI", "DataStructuresGUI", "AlgorithmicStructuresGUI",
                 "MethodsAndFunctionsGUI", "OOPGUI", "ExceptionsGUI", "FixedSizeArraysGUI",
-                "StandardContainersGUI", "GraphicalCustomizationGUI", "NonLinearContainersGUI", "ModernJavaGUI"
+                "StandardContainersGUI", "GraphicalCustomizationGUI", "NonLinearContainersGUI", "ModernJavaGUI",
+                "AboutGUI"
             };
             
             String[] explanations = {
-                "<b>1. Tipos de Datos:</b> Explica la memoria RAM y el uso de primitivos como int, double, boolean. Demostrando las capacidades físicas y los límites de máquina.",
-                "<b>2. Matemáticas:</b> Operadores aritméticos que emulan calculadoras, jerarquía de operaciones, módulo y pre-incrementos.",
-                "<b>3. Int. de Datos:</b> Estructuras base, envolturas de arreglos estándar y el uso iterativo de cadenas/strings.",
-                "<b>4. Algoritmia:</b> Toma de decisiones condicionales (If/Else, Switch) y bucles para iteración cíclica (For, While, Do-While) analizando el flujo de control.",
-                "<b>5. Métodos:</b> Reusabilidad del código al encapsular lógicas recurrentes. Paso de parámetros, valor de retorno (return) y recursividad emulando saltos en la Pila.",
-                "<b>6. P.O.O (Caso Práctico: Empleado e Ingeniero):</b><br/>" +
+                "<b>1. Fundamentos e Historia:</b> Detalles del nacimiento de Java, la magia arquitectónica (JVM, JRE, JDK), el Bytecode neutro que permite <i>WORA</i>, dependencias en Maven/Gradle y su sintaxis básica.",
+                "<b>2. Tipos de Datos:</b> Explica la memoria RAM y el uso de primitivos como int, double, boolean. Demostrando las capacidades físicas y los límites de máquina.",
+                "<b>3. Matemáticas:</b> Operadores aritméticos que emulan calculadoras, jerarquía de operaciones, módulo y pre-incrementos.",
+                "<b>4. Int. de Datos:</b> Estructuras base, envolturas de arreglos estándar y el uso iterativo de cadenas/strings.",
+                "<b>5. Algoritmia:</b> Toma de decisiones condicionales (If/Else, Switch) y bucles para iteración cíclica (For, While, Do-While) analizando el flujo de control.",
+                "<b>6. Métodos:</b> Reusabilidad del código al encapsular lógicas recurrentes. Paso de parámetros, valor de retorno (return) y recursividad emulando saltos en la Pila.",
+                "<b>7. P.O.O (Caso Práctico: Empleado e Ingeniero):</b><br/>" +
                 "&nbsp;• <b>Clase Base:</b> <code>Empleado</code>. Establece el método base <code>trabajar()</code> que hace tareas genéricas.<br/>" +
                 "&nbsp;• <b>Herencia y Polimorfismo:</b> Una clase <code>Ingeniero extends Empleado</code>, obtiene su nombre pero implementa <code>@Override</code> para sobre-escribir su trabajo, arrojando ahora: <i>'está programando en Java'</i>.",
-                "<b>7. Excepciones:</b> Modelos Try-Catch-Finally para interceptar fallos fatales de tiempo de ejecución sin permitir que el servidor colapse abruptamente (Ej: División por Cero).",
-                "<b>8. Arreglos Fijos:</b> Memoria estática, matrices bidimensionales (como tableros u hojas de cálculo) y recorridos por índices de complejidad O(1).",
-                "<b>9. Contenedores (LIFO/FIFO):</b> Pilas (Stack) y Colas (Queue) interactuando con ejemplos reales como Historiales de terminal o impresión local.",
-                "<b>10. Diseño UI/UX:</b> Edición de componentes Swing inyectando estética: Colores planos y Layouts que desafían el estándar metálico.",
-                "<b>11. Sets y Maps:</b> Contenedores no iterativos escudados por Códigos Hash. Rechazan sistemáticamente llaves duplicadas garantizando unicidad estructural.",
-                "<b>12. Modern Java:</b> Adopciones de JDK 16+: Pattern Matching sintáctico (Casteo virtual), Clases inmutables Record y Filtrado algorítmico Pipeline mediante Streams Api."
+                "<b>8. Excepciones:</b> Modelos Try-Catch-Finally para interceptar fallos fatales de tiempo de ejecución sin permitir que el servidor colapse abruptamente (Ej: División por Cero).",
+                "<b>9. Arreglos Fijos:</b> Memoria estática, matrices bidimensionales (como tableros u hojas de cálculo) y recorridos por índices de complejidad O(1).",
+                "<b>10. Contenedores (LIFO/FIFO):</b> Pilas (Stack) y Colas (Queue) interactuando con ejemplos reales como Historiales de terminal o impresión local.",
+                "<b>11. Diseño UI/UX:</b> Edición de componentes Swing inyectando estética: Colores planos y Layouts que desafían el estándar metálico.",
+                "<b>12. Sets y Maps:</b> Contenedores no iterativos escudados por Códigos Hash. Rechazan sistemáticamente llaves duplicadas garantizando unicidad estructural.",
+                "<b>13. Modern Java:</b> Adopciones de JDK 16+: Pattern Matching sintáctico (Casteo virtual), Clases inmutables Record y Filtrado algorítmico Pipeline mediante Streams Api.",
+                "<b>14. Información Institucional:</b><br/>Arquitectura de Aprendizaje desarrollada y fundamentada por el <b>Ing. Mg. Víctor Castro</b>. <br/>Para inquietudes profesionales, escribe al correo acreditado: <i>vfcastro@poligran.edu.co</i>."
             };
 
             JList<String> moduleList = new JList<>(titles);
@@ -125,7 +130,7 @@ public class MainGUI {
             JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             bottomPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
             
-            JButton btnLaunch = new JButton("▶️ Ejecutar Laboratorio Visual de este Módulo");
+            JButton btnLaunch = new JButton("Ver Ejemplo Visual (Swing)");
             btnLaunch.setFont(new Font("Segoe UI", Font.BOLD, 15));
             btnLaunch.setBackground(new Color(30, 130, 230));
             btnLaunch.setForeground(Color.WHITE);
