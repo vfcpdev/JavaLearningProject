@@ -8,12 +8,12 @@ public class MainGUI {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Proyecto de Aprendizaje de Java");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(550, 750); // Centrar en pantalla
+            frame.setSize(550, 800); // Centrar en pantalla
             frame.setLocationRelativeTo(null);
             
             // Panel Principal
             JPanel panel = new JPanel();
-            panel.setLayout(new GridLayout(11, 1, 10, 10));
+            panel.setLayout(new GridLayout(12, 1, 10, 10));
             panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
             
             JLabel lblTitle = new JLabel("Menú Principal de Aprendizaje", SwingConstants.CENTER);
@@ -49,6 +49,9 @@ public class MainGUI {
             JButton btnGuiDesign = new JButton("10. Personalización de Diseño Gráfico");
             btnGuiDesign.setFont(new Font("Arial", Font.PLAIN, 16));
 
+            JButton btnNonLinear = new JButton("11. Contenedores No Lineales");
+            btnNonLinear.setFont(new Font("Arial", Font.PLAIN, 16));
+
             btnDataTypes.addActionListener(e -> new DataTypesGUI());
             btnMathOps.addActionListener(e -> new MathOpsGUI());
             btnDataStructs.addActionListener(e -> new DataStructuresGUI());
@@ -59,6 +62,7 @@ public class MainGUI {
             btnFixedArrays.addActionListener(e -> new FixedSizeArraysGUI());
             btnContainers.addActionListener(e -> new StandardContainersGUI());
             btnGuiDesign.addActionListener(e -> new GraphicalCustomizationGUI());
+            btnNonLinear.addActionListener(e -> new NonLinearContainersGUI());
             
             panel.add(lblTitle);
             panel.add(btnDataTypes);
@@ -71,6 +75,7 @@ public class MainGUI {
             panel.add(btnFixedArrays);
             panel.add(btnContainers);
             panel.add(btnGuiDesign);
+            panel.add(btnNonLinear);
             
             frame.add(panel);
             frame.setVisible(true);

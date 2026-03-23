@@ -63,3 +63,15 @@ A continuación se detalla cada uno de los temas y ejercicios formalmente desarr
 * **Explicación**: Ejemplificación de las estructuras dinámicas provistas por la librería estándar basadas en paradigmas teóricos. Incluye `Listas y Arreglos` (`ArrayList`), `Pilas` (Stacks basadas en LIFO - Last-In-First-Out), `Colas Clásicas` (Queues FIFO - First-In-First-Out) instanciadas mediante `LinkedList()`, y `Colas de Prioridad` (`PriorityQueue`) ordenadas nativamente.
 * **Datos a usar**: Interacción manual apilando y formacionando elementos, o insertando valores enteros de prioridad customizada.
 * **Resultados esperados**: Los contenedores revelarán en todo momento la agrupación de sus datos, permitiendo comprobar que el Stack saca al último en llegar (`pop`), la Cola atiende al más antiguo (`poll`), y la Priority Queue extrae invariablemente al elemento de menor valor absoluto (prioridad ascendente).
+
+## 10. Modificadores Gráficos y Estéticos de GUI
+* **Nombres de Código**: `GraphicalCustomizationGUI.java`
+* **Explicación**: Demuestra cómo alterar programáticamente clases de la librería gráfica visual.
+* **Datos a usar**: Interacciones de Hardware del usuario mediante clics sobre el JPanel general.
+* **Resultados esperados**: Alteración estética masiva que transmuta el esquema Color.WHITE al clásico modo oscuro usando inyección RGB hexadecimal y reemplazos de ComponentFont.
+
+## 11. Contenedores de Datos No Lineales
+* **Nombres de Código**: `NonLinearContainersCLI.java`, `NonLinearContainersGUI.java`
+* **Explicación**: Colecciones profundas nativas para filtrado (como los Blacklists con Colecciones Set / `HashSet`) e Indexado o emparejamiento usando Modelos Entidad-Relación lógicos (A través del uso de un Mapa/Diccionario en formato `HashMap`).
+* **Datos a usar**: Simulaciones de Firewalls ingresando Listas de IPv4 y Direcciones MAC exclusivas. Y emparejamientos de Domain Name Systems (A (Dominio Web) -> Valor (IP referenciada)).
+* **Resultados esperados**: El objeto `Set` rebotará y descartará automáticamente las MAC/IPs duplicadas respondiendo el comando reservado con bandera falsa (`false`). Todo el Mapa indexará un árbol de Enrutamiento donde si consultas mediante GUI el dominio en modo Get `.get(LLAVE_DOMINIO)`, el compilador destapará en tiempo O(1) la IP almacenada.
