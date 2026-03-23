@@ -62,7 +62,9 @@ public class MainGUI {
                 "<b>3. Int. de Datos:</b> Estructuras base, envolturas de arreglos estándar y el uso iterativo de cadenas/strings.",
                 "<b>4. Algoritmia:</b> Toma de decisiones condicionales (If/Else, Switch) y bucles para iteración cíclica (For, While, Do-While) analizando el flujo de control.",
                 "<b>5. Métodos:</b> Reusabilidad del código al encapsular lógicas recurrentes. Paso de parámetros, valor de retorno (return) y recursividad emulando saltos en la Pila.",
-                "<b>6. P.O.O:</b> Moldeado de entidades de la vida real mediante Clases y Objetos. Explora Herencia, Polimorfismo y Encapsulación con atributos privados.",
+                "<b>6. P.O.O (Caso Práctico: Empleado e Ingeniero):</b><br/>" +
+                "&nbsp;• <b>Clase Base:</b> <code>Empleado</code>. Establece el método base <code>trabajar()</code> que hace tareas genéricas.<br/>" +
+                "&nbsp;• <b>Herencia y Polimorfismo:</b> Una clase <code>Ingeniero extends Empleado</code>, obtiene su nombre pero implementa <code>@Override</code> para sobre-escribir su trabajo, arrojando ahora: <i>'está programando en Java'</i>.",
                 "<b>7. Excepciones:</b> Modelos Try-Catch-Finally para interceptar fallos fatales de tiempo de ejecución sin permitir que el servidor colapse abruptamente (Ej: División por Cero).",
                 "<b>8. Arreglos Fijos:</b> Memoria estática, matrices bidimensionales (como tableros u hojas de cálculo) y recorridos por índices de complejidad O(1).",
                 "<b>9. Contenedores (LIFO/FIFO):</b> Pilas (Stack) y Colas (Queue) interactuando con ejemplos reales como Historiales de terminal o impresión local.",

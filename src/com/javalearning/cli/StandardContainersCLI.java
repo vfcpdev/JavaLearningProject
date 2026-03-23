@@ -1,7 +1,6 @@
 package com.javalearning.cli;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.Stack;
 import java.util.LinkedList;
 import java.util.Queue;

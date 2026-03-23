@@ -38,9 +38,12 @@ A continuación se detalla cada uno de los temas y ejercicios formalmente desarr
 
 ## 6. Programación Orientada a Objetos (POO)
 * **Nombres de Código**: `OOPCLI.java`, `OOPGUI.java`
-* **Explicación**: Inyección de instancias relógicas en Java. Establece la diferencia entre un molde vacío (`Class`) y un ente viviente en el segmento referenciado (`Instancia`), a la vez que se explican características vitales como la **Herencia** (sub-clases que descienden desde padres lógicos) y **Polimorfismo** (clásicamente implementado refactorizando y sobrecribiendo funciones usando la notación estricta `@Override`).
-* **Datos a usar**: Acciones mediadas por el usuario. Permite presionar botones que construyen en tiempo real entidades `Empleado` e `Ingeniero` (ambas interlazadas genéticamente por herencia).
-* **Resultados esperados**: Distintos comportamientos mostrados y sobreescritos en vivo durante la respuesta del sistema al invocar métodos superpuestos que comparten idénticamente el mismo nombre, exponiendo en su totalidad el verdadero de diseño Polimórfico de Java.
+* **Explicación Detallada del Laboratorio (`Empleado` e `Ingeniero`)**:
+  - **Clase Base `Empleado`**: Actúa como el molde o arquetipo genérico de la empresa. En su interior define una variable fundamental (`nombre`) y un comportamiento base en forma de método llamado `trabajar()` que genera la respuesta estática *"está trabajando de forma general."*.
+  - **Herencia e Inicialización (`Ingeniero`)**: La clase hija (`class Ingeniero extends Empleado`) hereda todos los genes del empleado (como el poder tener un nombre instantáneamente a través de `super(nombre)`) ahorrando la re-escritura masiva de variables en código.
+  - **Polimorfismo Dinámico**: El corazón de P.O.O. La clase `Ingeniero` intercepta la función heredada a través de un `@Override` alterando radicalmente su comportamiento interno. Así, aunque ambos usen una función homónima al dar sus instrucciones, el Ingeniero responderá de forma particular: *"está programando en Java."*.
+* **Datos a usar**: Interfaz visual y comandos CLI que accionan los disparadores de creación `Empleado (Base)` y `Ingeniero (Hija)`.
+* **Resultados esperados**: Evidenciar en tiempo real y en una misma ventana (usando polimorfismo dinámico en ejecución O(1)) que dos entes emparentados pueden compartir las mismas órdenes corporativas pero ejecutar conductas sistémicas y de hardware completamente autónomas y diametrales.
 
 ## 7. Manejo Probabilizado de Excepciones
 * **Nombres de Código**: `ExceptionsCLI.java`, `ExceptionsGUI.java`
