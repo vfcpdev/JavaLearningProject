@@ -1,0 +1,311 @@
+/* CSS Variables derivadas de la Paleta de Estructura Pantone Proporcionada y Glassmorphism Rules */
+:root {
+    /* Paleta Primaria */
+    --clr-primary-dark: #0F385A;  /* Pantone 2955 C */
+    --clr-primary-light: #1FB2DE; /* Pantone 312 C */
+    
+    /* Paleta Secundaria */
+    --clr-sec-orange: #FBAF17;    /* Pantone 137 C */
+    --clr-sec-green: #A6CE38;     /* Pantone 375 C */
+    --clr-sec-magenta: #EC0677;   /* Pantone 226 C */
+    --clr-sec-cyan: #15BECE;      /* Pantone 319 C */
+    
+    /* Variables de Fondo Modernos Glass-Tech */
+    --bg-dark-gradient: linear-gradient(135deg, #07192C, var(--clr-primary-dark));
+    --panel-glass: rgba(255, 255, 255, 0.05);
+    --panel-glass-hover: rgba(255, 255, 255, 0.08);
+    --border-glass: rgba(255, 255, 255, 0.15);
+    
+    /* Variables de Texto para fondo oscuro */
+    --txt-base: #E2E8F0;
+    --txt-muted: #94A3B8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--txt-base);
+    background: var(--bg-dark-gradient);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------------------------------
+   1. BARRA NAVEGADORA LATERAL (SIDEBAR)
+------------------------------------*/
+nav#sidebar {
+    width: 320px;
+    background: rgba(15, 56, 90, 0.70); /* primary dark translúcido */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-right: 1px solid var(--border-glass);
+    position: fixed;
+    height: 100vh;
+    padding: 2.5rem 1.5rem;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 5px 0 20px rgba(0,0,0,0.3);
+}
+
+nav#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+nav#sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--clr-primary-light);
+    border-radius: 10px;
+}
+
+nav#sidebar h2 {
+    color: var(--clr-primary-light);
+    font-weight: 900;
+    font-size: 1.3rem;
+    margin-bottom: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav#sidebar ul { list-style: none; }
+nav#sidebar ul li { margin-bottom: 0.6rem; }
+nav#sidebar ul li a {
+    color: var(--txt-muted);
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    display: block;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid transparent;
+}
+
+nav#sidebar ul li a:hover, nav#sidebar ul li a.active {
+    background: var(--panel-glass);
+    color: #fff;
+    transform: translateX(8px);
+    border-left: 4px solid var(--clr-sec-orange);
+    border-right: 1px solid var(--border-glass);
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------
+   2. CONTENIDO PRINCIPAL (MAIN)
+------------------------------------*/
+main {
+    flex: 1;
+    margin-left: 320px;
+    padding: 4rem 10%;
+    max-width: 1400px;
+}
+
+/* ---------------------------------
+   3. HERO HEADER
+------------------------------------*/
+.hero {
+    margin-bottom: 5rem;
+    animation: fadeInDown 1s ease-out;
+}
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #FFFFFF, var(--clr-sec-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero .subtitle {
+    font-size: 1.5rem;
+    color: var(--clr-sec-orange);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+.hero code {
+    background: rgba(251, 175, 23, 0.15); /* Naranja translúcido */
+    color: var(--clr-sec-orange);
+}
+
+.credits.glass-panel {
+    background: var(--panel-glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-glass);
+    padding: 2rem;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.credits .badge {
+    background: linear-gradient(45deg, var(--clr-sec-magenta), #b30058);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.credits h3 {
+    margin: 1.2rem 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 800;
+}
+.credits .email {
+    color: var(--clr-sec-green);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+.credits .email:hover {
+    color: #fff;
+}
+
+/* ---------------------------------
+   4. TARJETAS DE MÓDULOS (CARDS)
+------------------------------------*/
+.card {
+    background: var(--panel-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 4rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--clr-primary-light);
+}
+
+.card h2 {
+    color: var(--clr-sec-orange);
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.card h3 {
+    color: var(--clr-primary-light);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+}
+
+.card p, .card ul {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+.card ul {
+    padding-left: 1.8rem;
+    list-style-type: square;
+}
+.card ul li { margin-bottom: 0.8rem; }
+.card ul li strong { color: var(--clr-sec-cyan); }
+.card p b, .card p strong { color: var(--clr-sec-cyan); }
+
+/* Código Integrado */
+code {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(0,0,0,0.4);
+    color: var(--clr-sec-green); /* Pantone Verde Brillante */
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.9em;
+    border: 1px solid rgba(166, 206, 56, 0.2);
+}
+
+.meta-info { margin-bottom: 2rem; }
+.meta-info .pill {
+    display: inline-block;
+    background: rgba(236, 6, 119, 0.1); /* Translucido Magenta */
+    border: 1px solid var(--clr-sec-magenta);
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    box-shadow: 0 0 15px rgba(236, 6, 119, 0.2);
+}
+
+/* Diagrama Gráfico Box */
+.diagram-container {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px dashed var(--clr-primary-light);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin: 2.5rem 0;
+}
+.diagram-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+.diagram-img:hover {
+    transform: scale(1.02);
+}
+
+/* ---------------------------------
+   5. ANIMACIONES Y EFECTOS
+------------------------------------*/
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------------------------------
+   6. RESPONSIVE DESIGN (MÓVILES Y TABLTS)
+------------------------------------*/
+@media (max-width: 992px) {
+    body { flex-direction: column; }
+    
+    nav#sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-glass);
+        padding: 1.5rem;
+    }
+    nav#sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    nav#sidebar ul li { margin-bottom: 0; }
+    nav#sidebar ul li a { padding: 0.6rem 1rem; }
+    
+    main { margin-left: 0; padding: 2rem 5%; }
+    .hero h1 { font-size: 2.8rem; }
+    .card { padding: 2rem; }
+}
