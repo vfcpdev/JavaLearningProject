@@ -147,11 +147,32 @@ public class MainGUI {
             txtCliCode.setCaretColor(Color.WHITE);
             txtCliCode.setTabSize(4);
             
-            // --- NUEVO: EMULADOR INTERACTIVO CLI ---
+            // --- NUEVO: EMULADOR INTERACTIVO CLI CON REPRODUCTOR ---
             JPanel emulatorPanel = new JPanel(new BorderLayout());
             emulatorPanel.setBackground(Color.BLACK);
             
-            JTextArea txtConsoleOutput = new JTextArea("🖥️ Terminal Emulada Inactiva.\nSelecciona un Laboratorio y oprime [Ejecutar Consola CLI] debajo.");
+            // Barra superior de Control "Tipo Reproductor"
+            JPanel mediaControls = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 5));
+            mediaControls.setBackground(Color.DARK_GRAY);
+            
+            JButton btnPrev = new JButton("⏮"); // Retroceder a Módulo Anterior
+            JButton btnPlay = new JButton("▶"); // Ejecutar Módulo Actual
+            JButton btnStop = new JButton("⏹"); // Detener Proceso
+            JButton btnNext = new JButton("⏭"); // Avanzar a Módulo Siguiente
+            
+            Font mediaFont = new Font("Segoe UI Emoji", Font.PLAIN, 18);
+            for (JButton b : new JButton[]{btnPrev, btnPlay, btnStop, btnNext}) {
+                b.setFont(mediaFont);
+                b.setBackground(Color.BLACK);
+                b.setForeground(Color.WHITE);
+                b.setFocusPainted(false);
+                b.setContentAreaFilled(false);
+                b.setOpaque(true);
+                b.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                mediaControls.add(b);
+            }
+            
+            JTextArea txtConsoleOutput = new JTextArea("🖥️ Terminal Emulada Inactiva.\nUsa los controles (▶) para ejecutar el laboratorio actual.\nUsa (⏮) o (⏭) para cambiar el módulo rápidamente.\nUsa (⏹) para cancelar un programa trabado.");
             txtConsoleOutput.setFont(new Font("Consolas", Font.BOLD, 14));
             txtConsoleOutput.setBackground(Color.BLACK);
             txtConsoleOutput.setForeground(new Color(31, 178, 222)); // Light Blue
@@ -160,7 +181,10 @@ public class MainGUI {
             
             JScrollPane scrollConsole = new JScrollPane(txtConsoleOutput);
             scrollConsole.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(new Color(31,178,222)), " Output JVM Interactivo ", 0, 0, new Font("Segoe UI", Font.BOLD, 12), Color.WHITE));
+                BorderFactory.createLineBorder(new Color(31,178,222)), " Consola JVM Interactiva ", 0, 0, new Font("Segoe UI", Font.BOLD, 12), Color.WHITE));
+            
+            emulatorPanel.add(mediaControls, BorderLayout.NORTH);
+            emulatorPanel.add(scrollConsole, BorderLayout.CENTER);
             
             JPanel inputBox = new JPanel(new BorderLayout());
             JTextField txtConsoleInput = new JTextField();
@@ -289,6 +313,30 @@ public class MainGUI {
                 int idx = moduleList.getSelectedIndex();
                 if(idx >= 0){
                     launchSpecificGUI(idx);
+                }
+            });
+            
+            // Lógica de Controles de Reproducción (Emulador CLI)
+            btnPrev.addActionListener(e -> {
+                int c = moduleList.getSelectedIndex();
+                if(c > 0) {
+                    moduleList.setSelectedIndex(c - 1);
+                    btnLaunchCLI.doClick();
+                }
+            });
+            btnNext.addActionListener(e -> {
+                int c = moduleList.getSelectedIndex();
+                if(c >= 0 && c < titles.length - 1) {
+                    moduleList.setSelectedIndex(c + 1);
+                    btnLaunchCLI.doClick();
+                }
+            });
+            btnPlay.addActionListener(e -> btnLaunchCLI.doClick());
+            btnStop.addActionListener(e -> {
+                if (currentCliProcess != null && currentCliProcess.isAlive()) {
+                    currentCliProcess.destroyForcibly();
+                    processWriter = null;
+                    txtConsoleOutput.append("\n\n[SISTEMA]: ⏹ Proceso de consola abortado forzosamente.\n");
                 }
             });
 

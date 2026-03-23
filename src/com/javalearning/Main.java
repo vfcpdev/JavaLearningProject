@@ -52,6 +52,7 @@ public class Main {
             
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
+                if(scanner.hasNextLine()) scanner.nextLine(); // Consume newline residue
                 switch (choice) {
                     case 1:
                         JavaHistoryCLI.run(scanner);

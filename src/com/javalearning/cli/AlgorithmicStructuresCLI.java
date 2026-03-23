@@ -3,55 +3,53 @@ package com.javalearning.cli;
 import java.util.Scanner;
 
 public class AlgorithmicStructuresCLI {
+
     public static void main(String[] args) {
-        java.util.Scanner s = new java.util.Scanner(System.in);
-        run(s);
+        Scanner scanner = new Scanner(System.in);
+        run(scanner);
+        scanner.close();
     }
 
     public static void run(Scanner scanner) {
-        System.out.println("\n--- Estructuras Algorítmicas Básicas ---");
-        System.out.println("Enfoque práctico para Ingenieros de Sistemas");
+        System.out.println("\n=======================================================");
+        System.out.println("   MÓDULO 5: ESTRUCTURAS ALGORIÍTMICAS (INTERACTIVO)");
+        System.out.println("=======================================================");
         
-        System.out.println("\n1. ASIGNACIÓN (Asignación de variables de servidor)");
-        // Ejemplo cotidiano
-        String serverIp = "192.168.1.10";
-        int ramAssignedGB = 16;
-        double cpuUsage = 45.5; // Porcentaje
-        boolean isOnline = true;
-        System.out.println("Servidor configurado en IP: " + serverIp);
-        System.out.println("Memoria asignada: " + ramAssignedGB + "GB");
-        System.out.println("Uso actual de CPU: " + cpuUsage + "%");
-        System.out.println("Estado Online: " + isOnline);
+        System.out.println("\n[ 1. ASIGNACIÓN (=) ]");
+        System.out.println("En programación, el signo igual (=) no significa equidad matemática.");
+        System.out.println("Significa 'ASIGNAR' el valor de la derecha a la variable de la izquierda.");
+        System.out.print(">>> Asigna un número límite (Ej: 7) para nuestro constructor: ");
+        
+        int limiteElegido = 5;
+        try { limiteElegido = Integer.parseInt(scanner.nextLine().trim()); } catch(Exception e) {}
+        System.out.println("-> CÓDIGO INYECTADO: int limite = " + limiteElegido + ";");
 
-        System.out.println("\n2. CONDICIÓN (Monitoreo de Recursos en Tiempo Real)");
-        if (cpuUsage > 80.0) {
-            System.out.println("[ALERTA] Uso de CPU crítico (" + cpuUsage + "%). Se requiere balanceo de carga en el cluster.");
-        } else if (cpuUsage > 60.0) {
-            System.out.println("[WARNING] Uso de CPU elevado (" + cpuUsage + "%). Monitorear de cerca.");
+        System.out.println("\n[ 2. CONDICIÓN lógica (if / else) ]");
+        System.out.println("El programa va a bifurcar su camino dependiendo del número asignado.");
+        System.out.println("-> CÓDIGO EJECUTANDO: if (limite > 10) { ... } else { ... }");
+        
+        if (limiteElegido > 10) {
+            System.out.println("-> RESULTADO IF: Como " + limiteElegido + " es mayor a 10, ejecutamos el bloque VERDADERO.");
         } else {
-            System.out.println("[OK] Sistema estable. CPU operando normalmente bajo carga aceptable.");
+            System.out.println("-> RESULTADO ELSE: Como " + limiteElegido + " NO es mayor a 10, ejecutamos el bloque FALSO.");
+        }
+
+        System.out.println("\n[ 3. REPETICIÓN Cíclica (Ciclo FOR) ]");
+        System.out.println("El FOR es el rey de la automatización. Le diremos a Java que cuente automáticamente");
+        System.out.println("desde el número 1 hasta terminar en el límite " + limiteElegido + " que tú asignaste.");
+        System.out.println("\n-> CÓDIGO EJECUTANDO: for (int i = 1; i <= limite; i++) { ... }");
+        System.out.println("Arrancando turbinas del Bucle...");
+        
+        for (int i = 1; i <= limiteElegido; i++) {
+            System.out.println("  [✔] Bucle FOR en el ciclo actual: variable 'i' vale " + i);
+            try { Thread.sleep(350); } catch(Exception e) {} // Pausa teatral de 350ms para ver la repetición
         }
         
-        System.out.println("\n3. REPETICIÓN (Escaneo de puertos o pings continuos en red)");
-        System.out.println("Simulando pings a varios nodos del cluster dentro del segmento usando un ciclo FOR:");
-        for(int i = 1; i <= 5; i++) {
-            System.out.println(" Haciendo PING a 192.168.1." + i + " ... Respuesta recibida (12ms)");
-        }
-        
-        System.out.println("\nSimulando mecanismo de reintento de conexión a Base de Datos de producción usando un ciclo WHILE:");
-        int intentos = 1;
-        boolean dbConnected = false;
-        while (!dbConnected && intentos <= 3) {
-            System.out.println(" Intento de conexión a DB Host n° " + intentos + "...");
-            if (intentos == 3) { // Simularemos que al tercer intento se conecta
-                dbConnected = true;
-                System.out.println(" ¡Conexión establecida con éxito al Host de DB!");
-            }
-            intentos++;
-        }
-        
-        System.out.println("\nPresiona Enter para volver al Menú Principal...");
-        scanner.nextLine();
-        scanner.nextLine();
+        System.out.println("-> FIN DEL BUCLE FOR: La condición (i <= " + limiteElegido + ") ya no se cumple.");
+
+        System.out.println("\n=======================================================");
+        System.out.println("Tres piezas fundamentales del universo Java evidenciadas.");
+        System.out.println("Presiona Enter para finalizar y volver al Menú Principal...");
+        if(scanner.hasNextLine()) scanner.nextLine();
     }
 }

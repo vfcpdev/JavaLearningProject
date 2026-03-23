@@ -12,41 +12,54 @@ public class DataTypesCLI {
 
     public static void run(Scanner scanner) {
         System.out.println("\n=======================================================");
-        System.out.println("   MÓDULO 1: TIPOS DE DATOS BASE (PERFIL DE USUARIO)");
+        System.out.println("   MÓDULO 2: TIPOS DE DATOS (CONSTRUCTOR DE PERFIL REAL)");
         System.out.println("=======================================================");
-        System.out.println("Java es 'fuertemente tipado'. Utiliza 'moldes' específicos para guardar datos en RAM.");
-        System.out.println("En lugar de ver 8 tipos complejos, centraremos tu aprendizaje en los 4 tipos base.");
-        System.out.println("Vamos a simular la creación de un Perfil Universitario paso a paso.\n");
+        System.out.println("Java es 'fuertemente tipado'. Necesita cajas (variables) exactas para la memoria RAM.");
+        System.out.println("Vamos a utilizar la consola para capturar TUS datos reales y guardarlos en la RAM.");
         
-        System.out.print("-> Presiona [ENTER] para declarar el PRIMER dato: Texto (String)");
-        if (scanner.hasNextLine()) scanner.nextLine(); 
+        // --- 1. STRING ---
+        System.out.print("\n[Variable String -> Textos] Ingresa tu Nombre completo: ");
+        String nombreUsuario = scanner.nextLine();
+        System.out.println(" -> Éxito. RAM reservó espacio de texto para el valor: " + nombreUsuario);
         
-        System.out.println("\n>> CÓDIGO INYECTADO: String nombre = \"Víctor Castro\";");
-        String nombre = "Víctor Castro";
-        System.out.println("   // EXPLICACIÓN: 'String' permite encadenar decenas de letras formando Textos e Identidades.");
-        System.out.println("   -> MEMORIA RAM: [nombre] almacena: " + nombre);
-        System.out.print("-> (Enter para continuar)"); scanner.nextLine();
+        // --- 2. INT ---
+        System.out.print("\n[Variable int -> Números Enteros sin decimales] Ingresa tu Edad: ");
+        int edadUsuario = 0;
+        try {
+            edadUsuario = Integer.parseInt(scanner.nextLine());
+            System.out.println(" -> Éxito. RAM guardó el número abstracto " + edadUsuario);
+        } catch(Exception e) {
+            System.out.println(" -> ¡ERROR! Escribiste letras en vez de números. Java es estricto y bloquea formatos inválidos.");
+            edadUsuario = 18; // Edad por defecto
+        }
         
-        System.out.println("\n>> CÓDIGO INYECTADO: int edad = 30;");
-        int edad = 30;
-        System.out.println("   // EXPLICACIÓN: 'int' reserva memoria exclusivamente para números Enteros sin decimales.");
-        System.out.println("   -> MEMORIA RAM: [edad] almacena: " + edad);
-        System.out.print("-> (Enter para continuar)"); scanner.nextLine();
+        // --- 3. DOUBLE ---
+        System.out.print("\n[Variable double -> Números Precisos] Ingresa tu Estatura en metros (Ej: 1.70): ");
+        double estaturaUsuario = 0.0;
+        try {
+            estaturaUsuario = Double.parseDouble(scanner.nextLine());
+            System.out.println(" -> Éxito. RAM guardó la métrica decimal: " + estaturaUsuario + " mts");
+        } catch (Exception e) {
+            System.out.println(" -> ¡ERROR DE DECLARACIÓN! Java no permitió guardar ese dato sucio en un Double.");
+            estaturaUsuario = 1.65;
+        }
         
-        System.out.println("\n>> CÓDIGO INYECTADO: double estatura = 1.78;");
-        double estatura = 1.78;
-        System.out.println("   // EXPLICACIÓN: 'double' nos da el doble de memoria para calcular factores Decimales exactos.");
-        System.out.println("   -> MEMORIA RAM: [estatura] almacena: " + estatura + " mts");
-        System.out.print("-> (Enter para continuar)"); scanner.nextLine();
-        
-        System.out.println("\n>> CÓDIGO INYECTADO: boolean esProfesor = true;");
-        boolean esProfesor = true;
-        System.out.println("   // EXPLICACIÓN: 'boolean' es la unidad computacional más pequeña. Solo permite 'true' o 'false' (1 o 0).");
-        System.out.println("   -> MEMORIA RAM: [esProfesor] almacena: " + esProfesor);
-        System.out.print("-> (Enter para finalizar)"); scanner.nextLine();
+        // --- 4. BOOLEAN ---
+        System.out.print("\n[Variable boolean -> Sistema Binario Si/No] ¿Eres Estudiante de la Universidad Poli? (true/false): ");
+        String strBool = scanner.nextLine();
+        boolean esEstudiante = strBool.equalsIgnoreCase("true") || strBool.equalsIgnoreCase("si") || strBool.equalsIgnoreCase("sí");
+        System.out.println(" -> Éxito. RAM colapsó la lógica en el bit básico: " + esEstudiante);
 
+        // --- CONSOLIDACION ---
         System.out.println("\n=======================================================");
-        System.out.println("  ✓ PERFIL LOGRADO USANDO SOLAMENTE 4 TIPOS DE DATOS!");
+        System.out.println("  ✓ PERFIL COMPUTACIONAL ACUMULADO VÍA CONSOLA");
         System.out.println("=======================================================");
+        System.out.println("Nombre Identitario (String) : " + nombreUsuario);
+        System.out.println("Años Vividos Físicos (int)  : " + edadUsuario);
+        System.out.println("Magnitud Biométrica (double): " + estaturaUsuario);
+        System.out.println("Certificado de Estudio Poli (boolean): " + esEstudiante);
+        
+        System.out.println("\nPresiona Enter para finalizar y volver...");
+        if(scanner.hasNextLine()) scanner.nextLine();
     }
 }

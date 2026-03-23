@@ -35,16 +35,19 @@ public class ModernJavaCLI {
         );
         
         System.out.println("Lista base creada: " + grupo);
-        System.out.print("\n-> Presiona ENTER para aplicar un FÍLTRO que extraiga SÓLO a los mayores de edad (edad >= 18): ");
-        scanner.nextLine();
+        System.out.print("\n-> (Escribe un número) Digita una EDAD MÍNIMA para filtrar esta lista a tu gusto (Ej: 18 u 20): ");
+        int minAge = 18;
+        try { minAge = Integer.parseInt(scanner.nextLine().trim()); } catch(Exception e) {}
         
-        System.out.println("\n[FILTRANDO UTILIZANDO '.stream().filter()' ...]");
+        System.out.println("\n[FILTRANDO UTILIZANDO '.stream().filter(edad >= " + minAge + ")' ...]");
         
-        grupo.stream()
-            .filter(per -> per.edad() >= 18)
-            .forEach(per -> System.out.println("   + Mayores de edad detectado: " + per.nombre() + " (Edad " + per.edad() + ")"));
+        final int threshold = minAge;
+        long conteo = grupo.stream()
+            .filter(per -> per.edad() >= threshold)
+            .peek(per -> System.out.println("   + Individuo Encontrado: " + per.nombre() + " (Edad " + per.edad() + ")"))
+            .count();
                
-        System.out.println("\nNota cómo 'Juanito' con 15 años fue evadido automáticamente por el filtro.");
+        System.out.println("\nFiltro Inteligente Completado. Se evadieron " + (grupo.size() - conteo) + " personas automáticamente.");
         System.out.println("\n=======================================================");
         System.out.println("Presiona Enter para terminar el laboratorio...");
         if(scanner.hasNextLine()) scanner.nextLine();
