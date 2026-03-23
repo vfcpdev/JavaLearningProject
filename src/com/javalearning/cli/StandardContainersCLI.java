@@ -17,20 +17,33 @@ public class StandardContainersCLI {
         balancerIps.add("10.0.0.52");
         System.out.println("  -> IPs activas en el Load Balancer: " + balancerIps);
         
-        System.out.println("\n2. PILAS (Stacks - LIFO) -> Historial de Comandos de Terminal");
-        Stack<String> bashHistory = new Stack<>();
-        bashHistory.push("mkdir web_server");
-        bashHistory.push("chmod 777 web_server");
-        System.out.println("  -> Historial de la terminal bash: " + bashHistory);
-        System.out.println("  -> ¡Ejecutando Ctrl+Z! Último comando revertido (pop): " + bashHistory.pop());
-        System.out.println("  -> Historial actual remanente: " + bashHistory);
+        System.out.println("\n2. PILAS (Stacks - LIFO) -> Historial de Navegador Web (El clásico botón 'Atrás')");
+        Stack<String> webHistory = new Stack<>();
+        System.out.println("  -> Simulación automática: Navegando profundo en la web (PUSH de Páginas)...");
+        for (int i = 1; i <= 6; i++) {
+            webHistory.push("Dirección " + i);
+            System.out.println("     Visitando nueva URL: " + webHistory.peek());
+        }
         
-        System.out.println("\n3. COLAS (Queues - FIFO) -> Cola o Spooler de Impresión en Red");
-        Queue<String> printSpooler = new LinkedList<>();
-        printSpooler.offer("Doc_Finanzas.pdf");
-        printSpooler.offer("Reporte_Mensual.docx");
-        System.out.println("  -> Documentos esperando en la cola (Spooler): " + printSpooler);
-        System.out.println("  -> Impresora consumiendo y sacando el primer documento formado (poll): " + printSpooler.poll());
+        System.out.println("  -> Memoria temporal de navegación retenida en RAM: " + webHistory);
+        System.out.print("  -> (EJERCICIO) Oprime Enter para dar clic al botón 'ATRÁS' tres veces (Extracción Pop por LIFO)...");
+        scanner.nextLine();
+        
+        System.out.println("     1. Pop: Cerramos (" + webHistory.pop() + "). Ahora ves la " + webHistory.peek());
+        System.out.println("     2. Pop: Cerramos (" + webHistory.pop() + "). Ahora ves la " + webHistory.peek());
+        System.out.println("     3. Pop: Cerramos (" + webHistory.pop() + "). Ahora ves la " + webHistory.peek());
+        System.out.println("  -> Historial actual remanente tras aplicar reversión continua LIFO: " + webHistory);
+        
+        System.out.println("\n3. COLAS (Queues - FIFO) -> Gestor de Descargas Múltiples del Navegador");
+        Queue<String> managerDescargas = new LinkedList<>();
+        System.out.println("  -> Empujando peticiones de descarga (OFFER)...");
+        managerDescargas.offer("Instalador_JDK_21.exe");
+        managerDescargas.offer("Juego_Steam.zip");
+        managerDescargas.offer("Documento_Guia.pdf");
+        System.out.println("  -> Línea de descargas procesándose por orden de llegada (El primero en iniciar es el primero en acabar): " + managerDescargas);
+        System.out.println("  -> Servidor completando al 100% y sacando la primera petición de la fila (POLL): [" + managerDescargas.poll() + "]");
+        System.out.println("  -> Servidor completando la siguiente (POLL): [" + managerDescargas.poll() + "]");
+        System.out.println("  -> Peticiones todavía esperando en la memoria Queue: " + managerDescargas);
         
         System.out.println("\n4. COLAS DE PRIORIDAD (Priority Queues) -> Planificador de Procesos (Scheduler)");
         PriorityQueue<Integer> scheduler = new PriorityQueue<>();
