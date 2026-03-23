@@ -46,6 +46,8 @@ public class DataTypesGUI {
         btnNext.setFocusPainted(false);
         btnNext.setBackground(new Color(251, 175, 23)); // Pantone Orange
         btnNext.setForeground(new Color(15, 56, 90)); // Dark Blue Text
+        btnNext.setContentAreaFilled(false);
+        btnNext.setOpaque(true);
         btnNext.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         // Explicaciones muy sencillas (Solo 4 tipos base)

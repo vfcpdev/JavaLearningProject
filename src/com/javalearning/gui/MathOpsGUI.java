@@ -32,6 +32,8 @@ public class MathOpsGUI {
         JButton btnCalcular = new JButton("Realizar Operación Aritmética");
         btnCalcular.setBackground(new Color(251, 175, 23)); // Pantone Orange
         btnCalcular.setForeground(new Color(15, 56, 90));
+        btnCalcular.setContentAreaFilled(false);
+        btnCalcular.setOpaque(true);
         btnCalcular.setFont(new Font("Segoe UI", Font.BOLD, 15));
         btnCalcular.setFocusPainted(false);
         btnCalcular.setCursor(new Cursor(Cursor.HAND_CURSOR));

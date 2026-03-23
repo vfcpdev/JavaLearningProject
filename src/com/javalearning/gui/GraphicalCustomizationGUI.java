@@ -53,12 +53,16 @@ public class GraphicalCustomizationGUI {
         btnColor.setFont(new Font("Arial", Font.BOLD, 14));
         btnColor.setBackground(new Color(20, 20, 20));
         btnColor.setForeground(Color.WHITE);
+        btnColor.setContentAreaFilled(false);
+        btnColor.setOpaque(true);
         btnColor.setFocusPainted(false); 
         
         JButton btnAlerta = new JButton("Prueba Dialog Alert");
         btnAlerta.setFont(new Font("Arial", Font.BOLD, 14));
         btnAlerta.setBackground(new Color(200, 50, 50)); // Rojo rubí
         btnAlerta.setForeground(Color.WHITE);
+        btnAlerta.setContentAreaFilled(false);
+        btnAlerta.setOpaque(true);
         
         // Lógica programática para alterar colores durante Runtime
         btnColor.addActionListener(e -> {

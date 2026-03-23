@@ -27,6 +27,30 @@ public class MainGUI {
             frame.setSize(1100, 750);
             frame.setLocationRelativeTo(null);
 
+            // --- NUEVO: HEADER INSTITUCIONAL ---
+            JPanel topHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 15));
+            topHeader.setBackground(Color.WHITE);
+            topHeader.setBorder(BorderFactory.createMatteBorder(0, 0, 5, 0, new Color(31, 178, 222))); // Borde inferior Cyan
+            
+            try {
+                // Cargar logo y escalar altura inteligentemente
+                ImageIcon logoIcon = new ImageIcon("docs/Logo_poli.jpg");
+                Image img = logoIcon.getImage();
+                if (img != null && logoIcon.getIconWidth() > 0) {
+                    double aspect = (double) logoIcon.getIconWidth() / logoIcon.getIconHeight();
+                    Image scaledImg = img.getScaledInstance((int)(60 * aspect), 60, Image.SCALE_SMOOTH);
+                    topHeader.add(new JLabel(new ImageIcon(scaledImg)));
+                }
+            } catch (Exception e) {}
+            
+            JLabel lblCourseTitle = new JLabel("CURSO: Conceptos Fundamentales de Programación");
+            lblCourseTitle.setFont(new Font("Segoe UI", Font.BOLD, 25));
+            lblCourseTitle.setForeground(new Color(15, 56, 90)); // Navy Blue Pantone
+            topHeader.add(lblCourseTitle);
+            
+            frame.setLayout(new BorderLayout());
+            frame.add(topHeader, BorderLayout.NORTH);
+
             JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
             splitPane.setDividerLocation(300);
             splitPane.setContinuousLayout(true);

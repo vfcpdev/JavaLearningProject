@@ -61,6 +61,8 @@ public class ModernJavaGUI {
         btnStream.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnStream.setBackground(new Color(251, 175, 23)); // Orange Pantone
         btnStream.setForeground(new Color(15, 56, 90));
+        btnStream.setContentAreaFilled(false);
+        btnStream.setOpaque(true);
         btnStream.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         java.util.List<Persona> grupo = java.util.List.of(

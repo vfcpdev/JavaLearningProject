@@ -85,7 +85,9 @@ public class JavaHistoryGUI {
 
         submitBtn = new JButton("Ingresar Comando ▶");
         submitBtn.setBackground(new Color(251, 175, 23)); // Orange
-        submitBtn.setForeground(Color.BLACK);
+        submitBtn.setForeground(new Color(15, 56, 90)); // Navy Blue 
+        submitBtn.setContentAreaFilled(false);
+        submitBtn.setOpaque(true);
         submitBtn.setFont(new Font("Segoe UI", Font.BOLD, 13));
         
         inputPanel.add(inputField, BorderLayout.CENTER);

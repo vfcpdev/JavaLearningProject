@@ -30,6 +30,9 @@ public class NonLinearContainersGUI {
         JTextField tfInvitado = new JTextField("Ana");
         JButton btnAddInvitado = new JButton("Intentar Añadir");
         btnAddInvitado.setBackground(new Color(251, 175, 23));
+        btnAddInvitado.setForeground(new Color(15, 56, 90));
+        btnAddInvitado.setContentAreaFilled(false);
+        btnAddInvitado.setOpaque(true);
         
         btnAddInvitado.addActionListener(e -> {
             String name = tfInvitado.getText().trim();
@@ -61,6 +64,9 @@ public class NonLinearContainersGUI {
         JTextField tfClave = new JTextField("Victor");
         JButton btnBuscar = new JButton("Buscar Clave");
         btnBuscar.setBackground(new Color(166, 206, 56));
+        btnBuscar.setForeground(new Color(15, 56, 90));
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setOpaque(true);
         
         btnBuscar.addActionListener(e -> {
             String clave = tfClave.getText().trim();
